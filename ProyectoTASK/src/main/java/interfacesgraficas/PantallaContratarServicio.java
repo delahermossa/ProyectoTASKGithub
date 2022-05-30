@@ -1,5 +1,7 @@
 package interfacesgraficas;
 
-public class PantallaContratarServicio {
+import javax.swing.JPanel;
+
+public class PantallaContratarServicio extends JPanel {
 
 }

@@ -1,5 +1,7 @@
 package interfacesgraficas;
 
-public class PantallaCitas {
+import javax.swing.JPanel;
+
+public class PantallaCitas extends JPanel{
 
 }

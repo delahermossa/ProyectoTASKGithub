@@ -21,7 +21,7 @@ public class Ventana extends JFrame {
 	 * Es el usuario que inicia sesion en la pantalla login Hasta entonces vale null
 	 * Lo tenemos aquí para que esté disponible en todas las pantallas
 	 */
-	protected Usuario usuarioLogado;
+
 
 	public Ventana() {
 
@@ -57,6 +57,9 @@ public class Ventana extends JFrame {
 			break;
 		case "registro":
 			this.pantallaAtual = new PantallaRegistro(this);
+			break;
+		case "registroservicio":
+			this.pantallaAtual = new PantallaRegistroServicio(this);
 			break;
 
 		}

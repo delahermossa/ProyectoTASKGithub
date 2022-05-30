@@ -22,6 +22,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import enumeraciones.Ciudad;
 import excepciones.ContrasegnaInvalidaException;
+import utils.Utils;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -119,7 +120,7 @@ public class PantallaRegistro extends JPanel {
 		gbc_campoEmail.gridy = 5;
 		add(campoEmail, gbc_campoEmail);
 		campoEmail.setColumns(10);
-		
+
 		JLabel labelDireccion = new JLabel("Direcci\u00F3n");
 		GridBagConstraints gbc_labelDireccion = new GridBagConstraints();
 		gbc_labelDireccion.anchor = GridBagConstraints.EAST;
@@ -127,7 +128,7 @@ public class PantallaRegistro extends JPanel {
 		gbc_labelDireccion.gridx = 1;
 		gbc_labelDireccion.gridy = 6;
 		add(labelDireccion, gbc_labelDireccion);
-		
+
 		campoDireccion = new JTextField();
 		GridBagConstraints gbc_campoDireccion = new GridBagConstraints();
 		gbc_campoDireccion.gridwidth = 2;
@@ -138,16 +139,13 @@ public class PantallaRegistro extends JPanel {
 		add(campoDireccion, gbc_campoDireccion);
 		campoDireccion.setColumns(10);
 
-		
 		/**
-		 * Con buttonGroup conseguimos que se seleccione una de als opciones
-		 * y no las 3
+		 * Con buttonGroup conseguimos que se seleccione una de als opciones y no las 3
 		 */
-		ButtonGroup grupoGenero=new ButtonGroup();
+		ButtonGroup grupoGenero = new ButtonGroup();
 
 		botonRegistrarse = new JButton("Registrarse");
-		
-	
+
 		final JComboBox seleccionCiudad = new JComboBox();
 		seleccionCiudad.setModel(new DefaultComboBoxModel(Ciudad.values()));
 		GridBagConstraints gbc_seleccionCiudad = new GridBagConstraints();
@@ -189,30 +187,25 @@ public class PantallaRegistro extends JPanel {
 				String contraseña = new String(campoContraseña.getPassword());
 				String email = campoEmail.getText();
 				Ciudad ciudad = (Ciudad) seleccionCiudad.getSelectedItem();
-		
-				
+
 				/**
 				 * Creamos un nuevo usuario
 				 */
-				
+
 				try {
-					new Usuario(nombreUsuario,email,contraseña,true);
+					Utils.currentUser = new Usuario();
 					/**
-					 * JOptionPane. showMessage Dialog
-					 * ventana emergente cuando no se realiza bien el resgistro
-					 * 4 argumentos
-					 * 1ª ventana padre
-					 * 2º contenido mensaje
-					 * 3º  titulo
-					 * 4º Icono que te sale en el mensaje
+					 * JOptionPane. showMessage Dialog ventana emergente cuando no se realiza bien
+					 * el resgistro 4 argumentos 1ª ventana padre 2º contenido mensaje 3º titulo 4º
+					 * Icono que te sale en el mensaje
 					 */
-					JOptionPane.showMessageDialog(ventana,"Registrado con éxito","Registro completado",
-							+ JOptionPane.PLAIN_MESSAGE);
-					ventana.irAPantalla("login");/* Una vez registrado entra en la ventana de login*/
-					
-				} catch (SQLException | ContrasegnaInvalidaException e1) {
-					JOptionPane.showMessageDialog(ventana, e1.getMessage(),"Error",
-							JOptionPane.ERROR_MESSAGE);
+
+					JOptionPane.showMessageDialog(ventana, "Registrado con éxito", "Registro completado",
+							+JOptionPane.PLAIN_MESSAGE);
+					ventana.irAPantalla("login");// Una vez registrado entra en la ventana de login */
+
+				} catch (Exception e1) {
+					JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
