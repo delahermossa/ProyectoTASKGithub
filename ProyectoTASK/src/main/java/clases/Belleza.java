@@ -18,6 +18,22 @@ public class Belleza extends Servicio{
 	public Belleza() {
 		super();
 	}
+
+	/**
+	 * Devuelve el valor de subBelleza
+	 * @return SubBelleza devuelve el valor de subBelleza
+	 */
+	public SubBelleza getSubBelleza() {
+		return subBelleza;
+	}
+
+	/**
+	 * Método que da un nuevo valor a la variable subBelleza
+	 * @param subBelleza el nuevo valor de subBelleza
+	 */
+	public void setSubBelleza(SubBelleza subBelleza) {
+		this.subBelleza = subBelleza;
+	}
 	
 	
 

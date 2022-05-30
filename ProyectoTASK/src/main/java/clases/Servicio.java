@@ -27,6 +27,60 @@ public class Servicio extends ElementoConDineroYNombre {
 	public Servicio() {
 		super();
 	}
+
+
+	/**
+	 * Devuelve el valor de descripcion
+	 * @return String devuelve el valor de descripcion
+	 */
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+
+	/**
+	 * Devuelve el valor de ciudad
+	 * @return Ciudad devuelve el valor de ciudad
+	 */
+	public Ciudad getCiudad() {
+		return ciudad;
+	}
+
+
+	/**
+	 * Devuelve el valor de iconoCategoria
+	 * @return BufferedImage devuelve el valor de iconoCategoria
+	 */
+	public BufferedImage getIconoCategoria() {
+		return iconoCategoria;
+	}
+
+
+	/**
+	 * Método que da un nuevo valor a la variable descripcion
+	 * @param descripcion el nuevo valor de descripcion
+	 */
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+
+	/**
+	 * Método que da un nuevo valor a la variable ciudad
+	 * @param ciudad el nuevo valor de ciudad
+	 */
+	public void setCiudad(Ciudad ciudad) {
+		this.ciudad = ciudad;
+	}
+
+
+	/**
+	 * Método que da un nuevo valor a la variable iconoCategoria
+	 * @param iconoCategoria el nuevo valor de iconoCategoria
+	 */
+	public void setIconoCategoria(BufferedImage iconoCategoria) {
+		this.iconoCategoria = iconoCategoria;
+	}
 	
 	
 	

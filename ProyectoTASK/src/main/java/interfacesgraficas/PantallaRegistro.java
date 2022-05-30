@@ -20,7 +20,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
-import enumeraciones.Pais;
+import enumeraciones.Ciudad;
 import excepciones.ContrasegnaInvalidaException;
 
 import java.awt.event.MouseAdapter;
@@ -33,6 +33,7 @@ public class PantallaRegistro extends JPanel {
 	private JTextField campoUsuario;
 	private JPasswordField campoContraseña;
 	private JTextField campoEmail;
+	private JButton botonRegistrarse;
 
 	public PantallaRegistro(Ventana v) {
 		addMouseListener(new MouseAdapter() {
@@ -143,17 +144,17 @@ public class PantallaRegistro extends JPanel {
 		grupoGenero.add(generoHombre);
 		grupoGenero.add(generoMujer);
 
-		JButton botonRegistrarse = new JButton("Registrarse");
+		botonRegistrarse = new JButton("Registrarse");
 
-		JComboBox seleccionPais = new JComboBox();
-		seleccionPais.setModel(new DefaultComboBoxModel(Pais.values()));
-		GridBagConstraints gbc_seleccionPais = new GridBagConstraints();
-		gbc_seleccionPais.gridwidth = 3;
-		gbc_seleccionPais.insets = new Insets(0, 0, 5, 5);
-		gbc_seleccionPais.fill = GridBagConstraints.HORIZONTAL;
-		gbc_seleccionPais.gridx = 1;
-		gbc_seleccionPais.gridy = 9;
-		add(seleccionPais, gbc_seleccionPais);
+		JComboBox seleccionCiudad = new JComboBox();
+		seleccionCiudad.setModel(new DefaultComboBoxModel(Ciudad.values()));
+		GridBagConstraints gbc_seleccionCiudad = new GridBagConstraints();
+		gbc_seleccionCiudad.gridwidth = 3;
+		gbc_seleccionCiudad.insets = new Insets(0, 0, 5, 5);
+		gbc_seleccionCiudad.fill = GridBagConstraints.HORIZONTAL;
+		gbc_seleccionCiudad.gridx = 1;
+		gbc_seleccionCiudad.gridy = 9;
+		add(seleccionCiudad, gbc_seleccionCiudad);
 		GridBagConstraints gbc_botonRegistrarse = new GridBagConstraints();
 		gbc_botonRegistrarse.fill = GridBagConstraints.BOTH;
 		gbc_botonRegistrarse.gridwidth = 3;
@@ -185,7 +186,7 @@ public class PantallaRegistro extends JPanel {
 				String nombreUsuario = campoUsuario.getText();/* Captura el nombre insertado */
 				String contraseña = new String(campoContraseña.getPassword());
 				String email = campoEmail.getText();
-				Pais pais = (Pais) seleccionPais.getSelectedItem();
+				Ciudad ciudad = (Ciudad) seleccionCiudad.getSelectedItem();
 				char genero = 0;
 				if (generoHombre.isSelected()) {
 					genero = 'h';

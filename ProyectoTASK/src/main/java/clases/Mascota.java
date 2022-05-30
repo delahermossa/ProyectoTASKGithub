@@ -19,4 +19,22 @@ public class Mascota extends Servicio{
 		super();
 	}
 
+	/**
+	 * Devuelve el valor de subMascota
+	 * @return SubMascota devuelve el valor de subMascota
+	 */
+	public SubMascota getSubMascota() {
+		return subMascota;
+	}
+
+	/**
+	 * Método que da un nuevo valor a la variable subMascota
+	 * @param subMascota el nuevo valor de subMascota
+	 */
+	public void setSubMascota(SubMascota subMascota) {
+		this.subMascota = subMascota;
+	}
+	
+	
+
 }

@@ -18,6 +18,22 @@ public class Colegio extends Servicio {
 	public Colegio() {
 		super();
 	}
+
+	/**
+	 * Devuelve el valor de subColegio
+	 * @return SubColegio devuelve el valor de subColegio
+	 */
+	public SubColegio getSubColegio() {
+		return subColegio;
+	}
+
+	/**
+	 * Método que da un nuevo valor a la variable subColegio
+	 * @param subColegio el nuevo valor de subColegio
+	 */
+	public void setSubColegio(SubColegio subColegio) {
+		this.subColegio = subColegio;
+	}
 	
 	
 

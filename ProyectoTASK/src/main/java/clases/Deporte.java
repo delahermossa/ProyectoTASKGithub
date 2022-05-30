@@ -19,4 +19,22 @@ public class Deporte extends Servicio{
 		super();
 	}
 
+	/**
+	 * Devuelve el valor de subDeporte
+	 * @return SubDeporte devuelve el valor de subDeporte
+	 */
+	public SubDeporte getSubDeporte() {
+		return subDeporte;
+	}
+
+	/**
+	 * Método que da un nuevo valor a la variable subDeporte
+	 * @param subDeporte el nuevo valor de subDeporte
+	 */
+	public void setSubDeporte(SubDeporte subDeporte) {
+		this.subDeporte = subDeporte;
+	}
+	
+	
+
 }
