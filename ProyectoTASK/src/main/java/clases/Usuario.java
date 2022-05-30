@@ -41,6 +41,32 @@ public class Usuario extends ElementoConDineroYNombre{
 	}
 	
 	
+	
+	/**
+	 * Constructor de usuario para PantallaRegistro
+	 */
+	public Usuario(String nombre, String email, String apellidos, String contraseña, String direccion,
+			Ciudad ciudad, BufferedImage imagenPersona) {
+		super(nombre);
+		this.email = email;
+		this.apellidos = apellidos;
+		this.contraseña = contraseña;
+		this.direccion = direccion;
+		this.ciudad = ciudad;
+		this.imagenPersona = imagenPersona;
+	}
+	
+	/**
+	 * Constructor usuario para pantallaLogin
+	 */
+
+	public Usuario(String email, String contraseña) {
+		super();
+		this.email = email;
+		this.contraseña = contraseña;
+	}
+
+
 	public Usuario() {
 		super();
 	}

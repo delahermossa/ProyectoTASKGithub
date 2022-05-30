@@ -27,6 +27,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 import java.awt.Color;
+import javax.swing.border.SoftBevelBorder;
+import javax.swing.border.BevelBorder;
 
 public class PantallaRegistro extends JPanel {
 	private Ventana ventana;
@@ -34,8 +36,11 @@ public class PantallaRegistro extends JPanel {
 	private JPasswordField campoContraseña;
 	private JTextField campoEmail;
 	private JButton botonRegistrarse;
+	private JTextField campoDireccion;
 
 	public PantallaRegistro(Ventana v) {
+		setBorder(null);
+		setBackground(new Color(102, 204, 204));
 		addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -52,6 +57,7 @@ public class PantallaRegistro extends JPanel {
 		setLayout(gridBagLayout);
 
 		JLabel tituloRegistro = new JLabel("Registro");
+		tituloRegistro.setForeground(Color.WHITE);
 		tituloRegistro.setFont(new Font("Arial Black", Font.PLAIN, 37));
 		GridBagConstraints gbc_tituloRegistro = new GridBagConstraints();
 		gbc_tituloRegistro.gridwidth = 3;
@@ -78,7 +84,7 @@ public class PantallaRegistro extends JPanel {
 		add(campoUsuario, gbc_campoUsuario);
 		campoUsuario.setColumns(10);
 
-		JLabel labelContraseña = new JLabel("Contrase\u00F1a");
+		JLabel labelContraseña = new JLabel("Contraseña");
 		GridBagConstraints gbc_labelContraseña = new GridBagConstraints();
 		gbc_labelContraseña.anchor = GridBagConstraints.EAST;
 		gbc_labelContraseña.insets = new Insets(0, 0, 5, 5);
@@ -113,40 +119,36 @@ public class PantallaRegistro extends JPanel {
 		gbc_campoEmail.gridy = 5;
 		add(campoEmail, gbc_campoEmail);
 		campoEmail.setColumns(10);
+		
+		JLabel labelDireccion = new JLabel("Direcci\u00F3n");
+		GridBagConstraints gbc_labelDireccion = new GridBagConstraints();
+		gbc_labelDireccion.anchor = GridBagConstraints.EAST;
+		gbc_labelDireccion.insets = new Insets(0, 0, 5, 5);
+		gbc_labelDireccion.gridx = 1;
+		gbc_labelDireccion.gridy = 6;
+		add(labelDireccion, gbc_labelDireccion);
+		
+		campoDireccion = new JTextField();
+		GridBagConstraints gbc_campoDireccion = new GridBagConstraints();
+		gbc_campoDireccion.gridwidth = 2;
+		gbc_campoDireccion.insets = new Insets(0, 0, 5, 5);
+		gbc_campoDireccion.fill = GridBagConstraints.HORIZONTAL;
+		gbc_campoDireccion.gridx = 2;
+		gbc_campoDireccion.gridy = 6;
+		add(campoDireccion, gbc_campoDireccion);
+		campoDireccion.setColumns(10);
 
-		JRadioButton generoHombre = new JRadioButton("Hombre");
-		GridBagConstraints gbc_generoHombre = new GridBagConstraints();
-		gbc_generoHombre.insets = new Insets(0, 0, 5, 5);
-		gbc_generoHombre.gridx = 1;
-		gbc_generoHombre.gridy = 7;
-		add(generoHombre, gbc_generoHombre);
-
-		JRadioButton generoMujer = new JRadioButton("Mujer");
-		GridBagConstraints gbc_generoMujer = new GridBagConstraints();
-		gbc_generoMujer.insets = new Insets(0, 0, 5, 5);
-		gbc_generoMujer.gridx = 2;
-		gbc_generoMujer.gridy = 7;
-		add(generoMujer, gbc_generoMujer);
-
-		JRadioButton generoNoBinario = new JRadioButton("No binario");
-		GridBagConstraints gbc_generoNoBinario = new GridBagConstraints();
-		gbc_generoNoBinario.insets = new Insets(0, 0, 5, 5);
-		gbc_generoNoBinario.gridx = 3;
-		gbc_generoNoBinario.gridy = 7;
-		add(generoNoBinario, gbc_generoNoBinario);
 		
 		/**
 		 * Con buttonGroup conseguimos que se seleccione una de als opciones
 		 * y no las 3
 		 */
 		ButtonGroup grupoGenero=new ButtonGroup();
-		grupoGenero.add(generoNoBinario);
-		grupoGenero.add(generoHombre);
-		grupoGenero.add(generoMujer);
 
 		botonRegistrarse = new JButton("Registrarse");
-
-		JComboBox seleccionCiudad = new JComboBox();
+		
+	
+		final JComboBox seleccionCiudad = new JComboBox();
 		seleccionCiudad.setModel(new DefaultComboBoxModel(Ciudad.values()));
 		GridBagConstraints gbc_seleccionCiudad = new GridBagConstraints();
 		gbc_seleccionCiudad.gridwidth = 3;
@@ -187,15 +189,8 @@ public class PantallaRegistro extends JPanel {
 				String contraseña = new String(campoContraseña.getPassword());
 				String email = campoEmail.getText();
 				Ciudad ciudad = (Ciudad) seleccionCiudad.getSelectedItem();
-				char genero = 0;
-				if (generoHombre.isSelected()) {
-					genero = 'h';
-
-				} else if (generoMujer.isSelected()) {
-					genero = 'm';
-				} else if (generoNoBinario.isSelected()) {
-					genero = 'n';
-				}
+		
+				
 				/**
 				 * Creamos un nuevo usuario
 				 */
