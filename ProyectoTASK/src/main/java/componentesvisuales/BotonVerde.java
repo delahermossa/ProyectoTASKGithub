@@ -13,8 +13,8 @@ public class BotonVerde extends BotonRojo{
 		this.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				setForeground(new Color(150,200, 150));
-				setBackground(new Color( 0,50, 0));
+				setForeground(Color.WHITE);
+				setBackground(new Color (95,158,160));
 				setCursor(new Cursor(Cursor.HAND_CURSOR));
 			}
 			
@@ -32,6 +32,6 @@ public class BotonVerde extends BotonRojo{
 	
 	private void estilosPorDefecto() {
 		this.setForeground(new Color(0, 102, 153));
-		this.setBackground(new Color(102, 255, 102));
+		this.setBackground(new Color (95,158,160));
 	}
 }

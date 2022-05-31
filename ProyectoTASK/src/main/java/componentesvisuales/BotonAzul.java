@@ -16,8 +16,8 @@ public class BotonAzul extends BotonVerde {
 		this.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				setForeground(Color.BLUE);
-				setBackground(Color.CYAN);
+				setForeground(Color.GRAY);
+				setBackground(new Color (95,158,160));
 				setCursor(new Cursor(Cursor.HAND_CURSOR));
 			}
 			
@@ -31,10 +31,8 @@ public class BotonAzul extends BotonVerde {
 	
 	}
 	
-	
-	
 	private void estilosPorDefecto() {
 		this.setForeground(Color.WHITE);
-		this.setBackground(Color.GRAY);
+		this.setBackground(new Color (95,158,160));
 	}
 }

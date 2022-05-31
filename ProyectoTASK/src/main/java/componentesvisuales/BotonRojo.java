@@ -31,9 +31,7 @@ public class BotonRojo extends JButton {
 		this.setForeground(new Color(102, 0, 153));
 		this.setBackground(new Color(255, 102, 255));
 		this.setFocusable(false);
-		this.setBorder(
-				new MatteBorder(3,3,3,3,new Color(200,0,0)));
-		this.setFont(new Font("MV Boli", Font.BOLD, 20));
+		
 		
 	}
 }

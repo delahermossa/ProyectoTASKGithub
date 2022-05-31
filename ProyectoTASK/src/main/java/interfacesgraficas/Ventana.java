@@ -61,6 +61,9 @@ public class Ventana extends JFrame {
 		case "registroservicio":
 			this.pantallaAtual = new PantallaRegistroServicio(this);
 			break;
+		case "citas":
+			this.pantallaAtual=new PantallaCitas(this);
+			break;
 
 		}
 		this.pantallaAtual.setVisible(true);
