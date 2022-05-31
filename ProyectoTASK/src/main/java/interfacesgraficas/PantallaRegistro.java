@@ -49,94 +49,48 @@ public class PantallaRegistro extends JPanel {
 				ventana.irAPantalla("registro");
 			}
 		});
-		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[] { 0, 0, 0, 0, 0, 0 };
-		gridBagLayout.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-		gridBagLayout.columnWeights = new double[] { 1.0, 0.0, 1.0, 0.0, 1.0, Double.MIN_VALUE };
-		gridBagLayout.rowWeights = new double[] { 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0,
-				Double.MIN_VALUE };
-		setLayout(gridBagLayout);
+		setLayout(null);
 
 		JLabel tituloRegistro = new JLabel("Registro");
+		tituloRegistro.setBounds(329, 63, 170, 53);
 		tituloRegistro.setForeground(Color.WHITE);
 		tituloRegistro.setFont(new Font("Arial Black", Font.PLAIN, 37));
-		GridBagConstraints gbc_tituloRegistro = new GridBagConstraints();
-		gbc_tituloRegistro.gridwidth = 3;
-		gbc_tituloRegistro.insets = new Insets(0, 0, 5, 5);
-		gbc_tituloRegistro.gridx = 1;
-		gbc_tituloRegistro.gridy = 1;
-		add(tituloRegistro, gbc_tituloRegistro);
+		add(tituloRegistro);
 
 		JLabel labelUsuario = new JLabel("Usuario");
-		GridBagConstraints gbc_labelUsuario = new GridBagConstraints();
-		gbc_labelUsuario.insets = new Insets(0, 0, 5, 5);
-		gbc_labelUsuario.anchor = GridBagConstraints.EAST;
-		gbc_labelUsuario.gridx = 1;
-		gbc_labelUsuario.gridy = 3;
-		add(labelUsuario, gbc_labelUsuario);
+		labelUsuario.setBounds(238, 154, 34, 13);
+		add(labelUsuario);
 
 		campoUsuario = new JTextField();
-		GridBagConstraints gbc_campoUsuario = new GridBagConstraints();
-		gbc_campoUsuario.gridwidth = 2;
-		gbc_campoUsuario.insets = new Insets(0, 0, 5, 5);
-		gbc_campoUsuario.fill = GridBagConstraints.HORIZONTAL;
-		gbc_campoUsuario.gridx = 2;
-		gbc_campoUsuario.gridy = 3;
-		add(campoUsuario, gbc_campoUsuario);
+		campoUsuario.setBounds(277, 151, 332, 19);
+		add(campoUsuario);
 		campoUsuario.setColumns(10);
 
 		JLabel labelContraseña = new JLabel("Contraseña");
-		GridBagConstraints gbc_labelContraseña = new GridBagConstraints();
-		gbc_labelContraseña.anchor = GridBagConstraints.EAST;
-		gbc_labelContraseña.insets = new Insets(0, 0, 5, 5);
-		gbc_labelContraseña.gridx = 1;
-		gbc_labelContraseña.gridy = 4;
-		add(labelContraseña, gbc_labelContraseña);
+		labelContraseña.setBounds(220, 178, 52, 13);
+		add(labelContraseña);
 
 		campoContraseña = new JPasswordField();
-		GridBagConstraints gbc_campoContraseña = new GridBagConstraints();
-		gbc_campoContraseña.gridwidth = 2;
-		gbc_campoContraseña.insets = new Insets(0, 0, 5, 5);
-		gbc_campoContraseña.fill = GridBagConstraints.HORIZONTAL;
-		gbc_campoContraseña.gridx = 2;
-		gbc_campoContraseña.gridy = 4;
-		add(campoContraseña, gbc_campoContraseña);
+		campoContraseña.setBounds(277, 175, 332, 19);
+		add(campoContraseña);
 
 		JLabel labelEmail = new JLabel("Email");
+		labelEmail.setBounds(247, 202, 25, 13);
 		labelEmail.setBackground(Color.WHITE);
-		GridBagConstraints gbc_labelEmail = new GridBagConstraints();
-		gbc_labelEmail.anchor = GridBagConstraints.EAST;
-		gbc_labelEmail.insets = new Insets(0, 0, 5, 5);
-		gbc_labelEmail.gridx = 1;
-		gbc_labelEmail.gridy = 5;
-		add(labelEmail, gbc_labelEmail);
+		add(labelEmail);
 
 		campoEmail = new JTextField();
-		GridBagConstraints gbc_campoEmail = new GridBagConstraints();
-		gbc_campoEmail.gridwidth = 2;
-		gbc_campoEmail.insets = new Insets(0, 0, 5, 5);
-		gbc_campoEmail.fill = GridBagConstraints.HORIZONTAL;
-		gbc_campoEmail.gridx = 2;
-		gbc_campoEmail.gridy = 5;
-		add(campoEmail, gbc_campoEmail);
+		campoEmail.setBounds(277, 199, 332, 19);
+		add(campoEmail);
 		campoEmail.setColumns(10);
 
 		JLabel labelDireccion = new JLabel("Direcci\u00F3n");
-		GridBagConstraints gbc_labelDireccion = new GridBagConstraints();
-		gbc_labelDireccion.anchor = GridBagConstraints.EAST;
-		gbc_labelDireccion.insets = new Insets(0, 0, 5, 5);
-		gbc_labelDireccion.gridx = 1;
-		gbc_labelDireccion.gridy = 6;
-		add(labelDireccion, gbc_labelDireccion);
+		labelDireccion.setBounds(230, 226, 42, 13);
+		add(labelDireccion);
 
 		campoDireccion = new JTextField();
-		GridBagConstraints gbc_campoDireccion = new GridBagConstraints();
-		gbc_campoDireccion.gridwidth = 2;
-		gbc_campoDireccion.insets = new Insets(0, 0, 5, 5);
-		gbc_campoDireccion.fill = GridBagConstraints.HORIZONTAL;
-		gbc_campoDireccion.gridx = 2;
-		gbc_campoDireccion.gridy = 6;
-		add(campoDireccion, gbc_campoDireccion);
+		campoDireccion.setBounds(277, 223, 332, 19);
+		add(campoDireccion);
 		campoDireccion.setColumns(10);
 
 		/**
@@ -145,36 +99,23 @@ public class PantallaRegistro extends JPanel {
 		ButtonGroup grupoGenero = new ButtonGroup();
 
 		botonRegistrarse = new JButton("Registrarse");
+		botonRegistrarse.setBounds(220, 331, 389, 21);
 
 		final JComboBox seleccionCiudad = new JComboBox();
+		seleccionCiudad.setBounds(220, 307, 389, 19);
 		seleccionCiudad.setModel(new DefaultComboBoxModel(Ciudad.values()));
-		GridBagConstraints gbc_seleccionCiudad = new GridBagConstraints();
-		gbc_seleccionCiudad.gridwidth = 3;
-		gbc_seleccionCiudad.insets = new Insets(0, 0, 5, 5);
-		gbc_seleccionCiudad.fill = GridBagConstraints.HORIZONTAL;
-		gbc_seleccionCiudad.gridx = 1;
-		gbc_seleccionCiudad.gridy = 9;
-		add(seleccionCiudad, gbc_seleccionCiudad);
-		GridBagConstraints gbc_botonRegistrarse = new GridBagConstraints();
-		gbc_botonRegistrarse.fill = GridBagConstraints.BOTH;
-		gbc_botonRegistrarse.gridwidth = 3;
-		gbc_botonRegistrarse.insets = new Insets(0, 0, 5, 5);
-		gbc_botonRegistrarse.gridx = 1;
-		gbc_botonRegistrarse.gridy = 10;
-		add(botonRegistrarse, gbc_botonRegistrarse);
+		add(seleccionCiudad);
+		add(botonRegistrarse);
 
 		JButton botonAtras = new JButton("Atr\u00E1s");
+		botonAtras.setBounds(552, 420, 57, 21);
 		botonAtras.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				ventana.irAPantalla("login");
 			}
 		});
-		GridBagConstraints gbc_botonAtras = new GridBagConstraints();
-		gbc_botonAtras.insets = new Insets(0, 0, 5, 5);
-		gbc_botonAtras.gridx = 3;
-		gbc_botonAtras.gridy = 12;
-		add(botonAtras, gbc_botonAtras);
+		add(botonAtras);
 		ventana = v;
 
 		/**
