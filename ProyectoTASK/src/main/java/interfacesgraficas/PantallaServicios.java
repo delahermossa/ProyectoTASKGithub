@@ -19,37 +19,72 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
+import javax.swing.SwingConstants;
 
 public class PantallaServicios extends JPanel {
 	
 	private Ventana ventana;
 	
 	
+	
 	public PantallaServicios(Ventana v) {
 		setBackground(new Color(176, 224, 230));
-		addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-
-				ventana.irAPantalla("registro");
-			}
-		});
-
+		
+		this.ventana=v;/*declarar siempre en todas las ventanas*/
 		setLayout(null);
 		
 		JButton botonTASKER = new JButton("ALTA TASKER");
-		botonTASKER.setForeground(new Color(255, 255, 255));
-		botonTASKER.setFont(new Font("Century Gothic", Font.BOLD, 15));
-		botonTASKER.setBackground(new Color(32, 178, 170));
-		botonTASKER.setBounds(629, 528, 136, 30);
 		botonTASKER.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				ventana.irAPantalla("altaservicio");
 			}
 		});
+		
+		JButton botonMatematicas = new JButton("MATEM\u00C1TICAS");
+		botonMatematicas.setBackground(new Color(95, 158, 160));
+		botonMatematicas.setForeground(new Color(255, 255, 255));
+		botonMatematicas.setFont(new Font("Century Gothic", Font.BOLD, 15));
+		botonMatematicas.setBounds(211, 402, 139, 26);
+		add(botonMatematicas);
+		
+		JButton botonMusica = new JButton("M\u00DASICA");
+		botonMusica.setHorizontalAlignment(SwingConstants.CENTER);
+		botonMusica.setForeground(new Color(255, 255, 255));
+		botonMusica.setBackground(new Color(95, 158, 160));
+		botonMusica.setFont(new Font("Century Gothic", Font.BOLD, 15));
+		botonMusica.setBounds(216, 361, 121, 29);
+		add(botonMusica);
+		
+		JButton botonChef = new JButton("CHEF");
+		botonChef.setBackground(new Color(95, 158, 160));
+		botonChef.setForeground(new Color(255, 255, 255));
+		botonChef.setFont(new Font("Century Gothic", Font.BOLD, 15));
+		botonChef.setBounds(64, 440, 112, 30);
+		add(botonChef);
+		
+		JButton botonManitas = new JButton("MANITAS");
+		botonManitas.setFont(new Font("Century Gothic", Font.BOLD, 15));
+		botonManitas.setForeground(new Color(255, 255, 255));
+		botonManitas.setBackground(new Color(95, 158, 160));
+		botonManitas.setBounds(64, 400, 112, 30);
+		add(botonManitas);
+		
+		JButton botonLimpieza = new JButton("LIMPIEZA");
+		botonLimpieza.setBackground(new Color(95, 158, 160));
+		botonLimpieza.setForeground(new Color(255, 255, 255));
+		botonLimpieza.setFont(new Font("Century Gothic", Font.BOLD, 15));
+		botonLimpieza.setBounds(64, 360, 112, 30);
+		add(botonLimpieza);
+		botonTASKER.setForeground(new Color(255, 255, 255));
+		botonTASKER.setFont(new Font("Century Gothic", Font.BOLD, 15));
+		botonTASKER.setBackground(new Color(32, 178, 170));
+		botonTASKER.setBounds(629, 528, 136, 30);
+	
 	
 		add(botonTASKER);
+		
+		
 		
 		JLabel labelTitulo = new JLabel("\u00A1Encuentra todos los servicios en tu ciudad!");
 		labelTitulo.setForeground(new Color(255, 255, 255));
@@ -86,7 +121,7 @@ public class PantallaServicios extends JPanel {
 		enumHogar.setBackground(new Color(95, 158, 160));
 		enumHogar.setForeground(new Color(255, 255, 255));
 		enumHogar.setFont(new Font("Century Gothic", Font.BOLD, 15));
-		enumHogar.setBounds(71, 377, 98, 37);
+		enumHogar.setBounds(64, 219, 98, 37);
 		enumHogar.setModel(new DefaultComboBoxModel(SubHogar.values()));
 		add(enumHogar);
 		
@@ -95,7 +130,7 @@ public class PantallaServicios extends JPanel {
 		enumColegio.setBackground(new Color(95, 158, 160));
 		enumColegio.setForeground(new Color(255, 255, 255));
 		enumColegio.setFont(new Font("Century Gothic", Font.BOLD, 15));
-		enumColegio.setBounds(242, 381, 88, 33);
+		enumColegio.setBounds(242, 211, 88, 33);
 		enumColegio.setModel(new DefaultComboBoxModel(SubColegio.values()));
 
 		add(enumColegio);
@@ -104,7 +139,7 @@ public class PantallaServicios extends JPanel {
 		enumBelleza.setBackground(new Color(95, 158, 160));
 		enumBelleza.setForeground(new Color(255, 255, 255));
 		enumBelleza.setFont(new Font("Century Gothic", Font.BOLD, 15));
-		enumBelleza.setBounds(383, 381, 112, 33);
+		enumBelleza.setBounds(387, 221, 112, 33);
 		enumBelleza.setModel(new DefaultComboBoxModel(SubBelleza.values()));
 		add(enumBelleza);
 		
@@ -112,7 +147,7 @@ public class PantallaServicios extends JPanel {
 		enumDeporte.setBackground(new Color(95, 158, 160));
 		enumDeporte.setForeground(new Color(255, 255, 255));
 		enumDeporte.setFont(new Font("Century Gothic", Font.BOLD, 15));
-		enumDeporte.setBounds(544, 383, 80, 29);
+		enumDeporte.setBounds(544, 223, 80, 29);
 		enumDeporte.setModel(new DefaultComboBoxModel(SubDeporte.values()));
 		add(enumDeporte);
 		
@@ -120,7 +155,7 @@ public class PantallaServicios extends JPanel {
 		enumMascota.setBackground(new Color(95, 158, 160));
 		enumMascota.setForeground(new Color(255, 255, 255));
 		enumMascota.setFont(new Font("Century Gothic", Font.BOLD, 15));
-		enumMascota.setBounds(668, 383, 77, 29);
+		enumMascota.setBounds(668, 223, 77, 29);
 		enumMascota.setModel(new DefaultComboBoxModel(SubMascota.values()));
 		add(enumMascota);
 		

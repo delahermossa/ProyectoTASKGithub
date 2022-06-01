@@ -42,13 +42,7 @@ public class PantallaAltaServicio extends JPanel {
 	public PantallaAltaServicio(Ventana v) {
 		setBorder(null);
 		setBackground(Color.WHITE);
-		addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-
-				ventana.irAPantalla("altaservicio");
-			}
-		});
+		this.ventana=v;
 		setLayout(null);
 		
 		JLabel labelTexto2 = new JLabel(" y comenzar a trabajar desde ya!");
