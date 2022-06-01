@@ -2,8 +2,8 @@ package enumeraciones;
 
 public enum SubMascota {
 	
-	SALUD,
 	PASEO,
+	VETERINARIO,
 	PELUQUERIA;
 
 }

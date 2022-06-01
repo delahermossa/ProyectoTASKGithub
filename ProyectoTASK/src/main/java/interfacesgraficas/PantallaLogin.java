@@ -55,7 +55,7 @@ public class PantallaLogin extends JPanel {
 					Utils.currentUser = new Usuario(email, contraseña);
 					JOptionPane.showMessageDialog(ventana, "Bienvenid@ " + Utils.currentUser.getNombreUsuario(),
 							"Inicio de sesion con éxito ", JOptionPane.INFORMATION_MESSAGE);
-					ventana.irAPantalla("registroservicio");
+					ventana.irAPantalla("altaservicio");
 
 				} catch (Exception e1) {
 					JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);

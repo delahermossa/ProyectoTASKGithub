@@ -22,7 +22,6 @@ import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import enumeraciones.Ciudad;
 import excepciones.ContrasegnaInvalidaException;
-import utils.Utils;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -32,7 +31,7 @@ import javax.swing.border.SoftBevelBorder;
 import javax.swing.border.BevelBorder;
 import javax.swing.ImageIcon;
 
-public class PantallaRegistro extends JPanel {
+public class PantallaAltaServicio extends JPanel {
 	private Ventana ventana;
 	private JTextField campoUsuario;
 	private JPasswordField campoContraseña;
@@ -40,105 +39,92 @@ public class PantallaRegistro extends JPanel {
 	private JButton botonRegistrarse;
 	private JTextField campoDireccion;
 
-	public PantallaRegistro(Ventana v) {
+	public PantallaAltaServicio(Ventana v) {
 		setBorder(null);
 		setBackground(Color.WHITE);
 		addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
-				ventana.irAPantalla("registro");
+				ventana.irAPantalla("altaservicio");
 			}
 		});
 		setLayout(null);
 		
-		JLabel labelIconoRegistro = new JLabel("");
-		labelIconoRegistro.setIcon(new ImageIcon(PantallaRegistro.class.getResource("/imagenes/iconoPrincipal.png")));
-		labelIconoRegistro.setBounds(57, 35, 106, 100);
-		add(labelIconoRegistro);
+		JLabel labelTexto2 = new JLabel(" y comenzar a trabajar desde ya!");
+		labelTexto2.setForeground(Color.WHITE);
+		labelTexto2.setFont(new Font("Century Gothic", Font.BOLD, 20));
+		labelTexto2.setBounds(249, 151, 340, 37);
+		add(labelTexto2);
 		
+		JLabel labelTexto = new JLabel("\u00A1Ahora puedes darte de alta como Tasker");
+		labelTexto.setForeground(Color.WHITE);
+		labelTexto.setFont(new Font("Century Gothic", Font.BOLD, 20));
+		labelTexto.setBounds(214, 124, 417, 37);
+		add(labelTexto);
 		
-		JLabel labelCiudad = new JLabel("Ciudad");
-		labelCiudad.setForeground(Color.GRAY);
-		labelCiudad.setFont(new Font("Century Gothic", Font.BOLD, 20));
-		labelCiudad.setBounds(25, 468, 106, 28);
-		add(labelCiudad);
+		JLabel labelIcono = new JLabel("");
+		labelIcono.setIcon(new ImageIcon(PantallaAltaServicio.class.getResource("/imagenes/iconoPrincipal.png")));
+		labelIcono.setBounds(68, 48, 106, 108);
+		add(labelIcono);
 
-		JLabel tituloRegistro = new JLabel("Registro");
-		tituloRegistro.setBounds(567, 35, 170, 53);
-		tituloRegistro.setForeground(new Color(95, 158, 160));
-		tituloRegistro.setFont(new Font("Century Gothic", Font.BOLD, 35));
+		JLabel tituloRegistro = new JLabel("ALTA TASKER");
+		tituloRegistro.setBounds(214, 82, 259, 43);
+		tituloRegistro.setForeground(Color.WHITE);
+		tituloRegistro.setFont(new Font("Century Gothic", Font.BOLD, 30));
 		add(tituloRegistro);
 
 		JLabel labelUsuario = new JLabel("Usuario");
-		labelUsuario.setForeground(Color.GRAY);
-		labelUsuario.setFont(new Font("Century Gothic", Font.BOLD, 20));
-		labelUsuario.setBounds(25, 156, 84, 38);
+		labelUsuario.setBounds(42, 323, 34, 13);
 		add(labelUsuario);
 
 		campoUsuario = new JTextField();
-		campoUsuario.setBounds(25, 193, 332, 28);
+		campoUsuario.setBounds(181, 299, 321, 19);
 		add(campoUsuario);
 		campoUsuario.setColumns(10);
 
 		JLabel labelContraseña = new JLabel("Contraseña");
-		labelContraseña.setForeground(Color.GRAY);
-		labelContraseña.setFont(new Font("Century Gothic", Font.BOLD, 20));
-		labelContraseña.setBounds(22, 219, 153, 42);
+		labelContraseña.setBounds(42, 352, 52, 13);
 		add(labelContraseña);
 
 		campoContraseña = new JPasswordField();
-		campoContraseña.setBounds(25, 261, 332, 32);
+		campoContraseña.setBounds(141, 349, 321, 19);
 		add(campoContraseña);
 
 		JLabel labelEmail = new JLabel("Email");
-		labelEmail.setForeground(Color.GRAY);
-		labelEmail.setFont(new Font("Century Gothic", Font.BOLD, 20));
-		labelEmail.setBounds(25, 303, 84, 27);
+		labelEmail.setBounds(44, 381, 25, 13);
 		labelEmail.setBackground(Color.WHITE);
 		add(labelEmail);
 
 		campoEmail = new JTextField();
-		campoEmail.setBounds(25, 340, 332, 28);
+		campoEmail.setBounds(141, 378, 321, 19);
 		add(campoEmail);
 		campoEmail.setColumns(10);
 
 		JLabel labelDireccion = new JLabel("Direcci\u00F3n");
-		labelDireccion.setForeground(Color.GRAY);
-		labelDireccion.setFont(new Font("Century Gothic", Font.BOLD, 20));
-		labelDireccion.setBounds(25, 385, 117, 36);
+		labelDireccion.setBounds(42, 405, 42, 13);
 		add(labelDireccion);
 
 		campoDireccion = new JTextField();
-		campoDireccion.setBounds(25, 420, 332, 28);
+		campoDireccion.setBounds(116, 402, 321, 19);
 		add(campoDireccion);
 		campoDireccion.setColumns(10);
 
 		/**
 		 * Con buttonGroup conseguimos que se seleccione una de als opciones y no las 3
 		 */
-		ButtonGroup grupoGenero = new ButtonGroup();
-
-		botonRegistrarse = new JButton("Registrarse");
-		botonRegistrarse.setBackground(new Color(95, 158, 160));
-		botonRegistrarse.setFont(new Font("Century Gothic", Font.BOLD, 20));
-		botonRegistrarse.setForeground(new Color(255, 255, 255));
-		botonRegistrarse.setBounds(25, 552, 152, 36);
+	
+		botonRegistrarse = new JButton("Registrar Servicio");
+		botonRegistrarse.setBounds(30, 535, 378, 21);
 
 		final JComboBox seleccionCiudad = new JComboBox();
-		seleccionCiudad.setBackground(new Color(95, 158, 160));
-		seleccionCiudad.setForeground(Color.WHITE);
-		seleccionCiudad.setFont(new Font("Century Gothic", Font.BOLD, 20));
-		seleccionCiudad.setBounds(25, 506, 282, 36);
+		seleccionCiudad.setBounds(30, 506, 378, 19);
 		seleccionCiudad.setModel(new DefaultComboBoxModel(Ciudad.values()));
 		add(seleccionCiudad);
 		add(botonRegistrarse);
 
 		JButton botonAtras = new JButton("Atr\u00E1s");
-		botonAtras.setBackground(new Color(95, 158, 160));
-		botonAtras.setForeground(new Color(255, 255, 255));
-		botonAtras.setFont(new Font("Century Gothic", Font.BOLD, 20));
-		botonAtras.setBounds(664, 552, 145, 36);
+		botonAtras.setBounds(323, 578, 57, 21);
 		botonAtras.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -147,23 +133,10 @@ public class PantallaRegistro extends JPanel {
 		});
 		add(botonAtras);
 		
-		
-		JLabel LabelCampoRegistro = new JLabel("");
-		LabelCampoRegistro.setIcon(new ImageIcon(PantallaRegistro.class.getResource("/imagenes/lateral.png")));
-		LabelCampoRegistro.setForeground(Color.GRAY);
-		LabelCampoRegistro.setBounds(0, -29, 419, 713);
-		add(LabelCampoRegistro);
-		
-		JLabel labelImagenRegistro = new JLabel("");
-		labelImagenRegistro.setIcon(new ImageIcon(PantallaRegistro.class.getResource("/imagenes/imagenRegistro.png")));
-		labelImagenRegistro.setBounds(433, 132, 396, 443);
-		add(labelImagenRegistro);
-		
-		JLabel lblNewLabel = new JLabel("!Reg\u00EDstrate y descubre todos nuestros servicios!");
-		lblNewLabel.setForeground(new Color(95, 158, 160));
-		lblNewLabel.setFont(new Font("Century Gothic", Font.BOLD, 15));
-		lblNewLabel.setBounds(464, 98, 349, 23);
-		add(lblNewLabel);
+		JLabel labelFondo = new JLabel("");
+		labelFondo.setIcon(new ImageIcon(PantallaAltaServicio.class.getResource("/imagenes/fondoServicios.jpg")));
+		labelFondo.setBounds(0, 0, 853, 657);
+		add(labelFondo);
 		ventana = v;
 
 		/**
@@ -182,16 +155,15 @@ public class PantallaRegistro extends JPanel {
 				 */
 
 				try {
-					Utils.currentUser = new Usuario();
+					// new Usuario(nombreUsuario,email,contraseña,true);
 					/**
 					 * JOptionPane. showMessage Dialog ventana emergente cuando no se realiza bien
 					 * el resgistro 4 argumentos 1ª ventana padre 2º contenido mensaje 3º titulo 4º
 					 * Icono que te sale en el mensaje
 					 */
-
 					JOptionPane.showMessageDialog(ventana, "Registrado con éxito", "Registro completado",
 							+JOptionPane.PLAIN_MESSAGE);
-					ventana.irAPantalla("servicios");// Una vez registrado entra en la ventana de login */
+					ventana.irAPantalla("login");/* Una vez registrado entra en la ventana de login */
 
 				} catch (Exception e1) {
 					JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
