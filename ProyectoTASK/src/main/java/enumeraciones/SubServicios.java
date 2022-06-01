@@ -1,0 +1,22 @@
+package enumeraciones;
+
+public enum SubServicios {
+	
+	MANICURA,
+	ESTILISMO,
+	TRATAMIENTOFACIAL,
+	MÚSICA,
+	MATES,
+	LENGUA,
+	COACH,
+	PADEL,
+	FUTBOL,
+	LIMPIEZA,
+	MANITAS,
+	CHEF,
+	PASEO,
+	MEDICO,
+	PELUQUERO;
+	
+
+}

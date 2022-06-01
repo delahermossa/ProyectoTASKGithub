@@ -4,11 +4,11 @@ import java.awt.Color;
 
 import javax.swing.JPanel;
 
-public class PantallaContratarServicio extends JPanel {
+public class PantallaPaseo extends JPanel {
 	
 private Ventana ventana;
 	
-	public PantallaContratarServicio(Ventana v) {
+	public PantallaPaseo(Ventana v) {
 		setBackground(new Color(176, 224, 230));
 		
 		this.ventana=v;

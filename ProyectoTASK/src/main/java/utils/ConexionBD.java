@@ -6,7 +6,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public abstract class ConexionBD {
-	//He cambiado la base de datos para que me funcione a mi ya que tengo una contraseña diferente y nombres diferentes
+	// He cambiado la base de datos para que me funcione a mi ya que tengo una
+	// contraseña diferente y nombres diferentes
 	private final static String cadenaConexion = "jdbc:mysql://localhost:3306/proyectofinal";
 	private final static String usuarioBD = "root";
 	private final static String passwordBD = "admin";
@@ -24,13 +25,12 @@ public abstract class ConexionBD {
 			return null;
 		}
 	}
-	
-	
+
 	public static void desconectar() {
-		if(conexion!=null) {
+		if (conexion != null) {
 			try {
 				conexion.close();
-				conexion=null;
+				conexion = null;
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

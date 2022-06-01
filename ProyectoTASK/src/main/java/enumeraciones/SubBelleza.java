@@ -3,7 +3,7 @@ package enumeraciones;
 public enum SubBelleza {
 	
 	MANICURA,
-	DEPILACIÓN,
-	ESTILISMO;
+	ESTILISMO,
+	FACIAL;
 
 }
