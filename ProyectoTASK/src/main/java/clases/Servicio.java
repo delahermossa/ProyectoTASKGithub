@@ -21,20 +21,20 @@ public class Servicio {
 	private String descripcion;
 	private Usuario usuario;
 	private Ciudad ciudad;
-	private BufferedImage iconoCategoria;
+	private BufferedImage fotoUsuario;
 
 	public Servicio() {
 		super();
 	}
 
 	public Servicio(String nombreServicio, float precioServicio, String descripcion, Ciudad ciudad,
-			BufferedImage iconoCategoria) {
+			BufferedImage fotoUsuario) {
 		super();
 		this.nombreServicio = nombreServicio;
 		this.precioServicio = precioServicio;
 		this.descripcion = descripcion;
 		this.ciudad = ciudad;
-		this.iconoCategoria = iconoCategoria;
+		this.fotoUsuario = fotoUsuario;
 	}
 
 	/**
@@ -74,12 +74,12 @@ public class Servicio {
 	}
 
 	/**
-	 * Devuelve el valor de iconoCategoria
+	 * Devuelve el valor de fotoUsuario
 	 * 
-	 * @return BufferedImage devuelve el valor de iconoCategoria
+	 * @return BufferedImage devuelve el valor de fotoUsuario
 	 */
-	public BufferedImage getIconoCategoria() {
-		return iconoCategoria;
+	public BufferedImage getfotoUsuario() {
+		return fotoUsuario;
 	}
 
 	/**
@@ -119,12 +119,12 @@ public class Servicio {
 	}
 
 	/**
-	 * Método que da un nuevo valor a la variable iconoCategoria
+	 * Método que da un nuevo valor a la variable fotoUsuario
 	 * 
-	 * @param iconoCategoria el nuevo valor de iconoCategoria
+	 * @param fotoUsuario el nuevo valor de fotoUsuario
 	 */
-	public void setIconoCategoria(BufferedImage iconoCategoria) {
-		this.iconoCategoria = iconoCategoria;
+	public void setfotoUsuario(BufferedImage fotoUsuario) {
+		this.fotoUsuario = fotoUsuario;
 	}
 
 	/**

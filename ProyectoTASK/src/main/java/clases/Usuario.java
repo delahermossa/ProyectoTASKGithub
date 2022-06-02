@@ -1,11 +1,15 @@
 package clases;
 
 import java.awt.image.BufferedImage;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
 import enumeraciones.Ciudad;
+import excepciones.ContrasegnaIncorrectaException;
+import excepciones.ContrasegnaInvalidaException;
+import excepciones.UsuarioNoExisteException;
 import utils.ConexionBD;
 
 public class Usuario {
@@ -22,10 +26,9 @@ public class Usuario {
 	private ArrayList<Valoracion> valoracionUsuarioVendedor;
 	private BufferedImage imagenPersona;
 
-	public Usuario(String nombreUsuario, float carteraUsuario, String email, String contraseña,
-			String direccion, Ciudad ciudad, boolean esAdmin, ArrayList<Servicio> serviciosOfrecidos,
-			ArrayList<Cita> citasAgendadas, ArrayList<Valoracion> valoracionUsuarioVendedor,
-			BufferedImage imagenPersona) {
+	public Usuario(String nombreUsuario, float carteraUsuario, String email, String contraseña, String direccion,
+			Ciudad ciudad, boolean esAdmin, ArrayList<Servicio> serviciosOfrecidos, ArrayList<Cita> citasAgendadas,
+			ArrayList<Valoracion> valoracionUsuarioVendedor, BufferedImage imagenPersona) {
 		super();
 		this.nombreUsuario = nombreUsuario;
 		this.carteraUsuario = carteraUsuario;
@@ -39,18 +42,19 @@ public class Usuario {
 		this.valoracionUsuarioVendedor = valoracionUsuarioVendedor;
 		this.imagenPersona = imagenPersona;
 	}
-	
+
 	/**
 	 * Constructor para pantalla registro
-	 * @throws SQLException 
+	 * 
+	 * @throws SQLException
 	 */
-	public Usuario(String nombreUsuario, String email, String contraseña, String direccion, Ciudad ciudad) throws SQLException {
+	public Usuario(String nombreUsuario, String email, String contraseña, String direccion, Ciudad ciudad)
+			throws SQLException {
 		super();
-		
-		
+
 		Statement smt = ConexionBD.conectar();
-		if (smt.executeUpdate(
-				"insert into usuarios (email,contraseña,nombre,direccion,ciudad)values('" + email + "','" + contraseña + "','" + nombreUsuario + "','" + direccion + "','" + ciudad+"')") > 0) {
+		if (smt.executeUpdate("insert into usuarios (email,contraseña,nombre,direccion,ciudad)values('" + email + "','"
+				+ contraseña + "','" + nombreUsuario + "','" + direccion + "','" + ciudad + "')") > 0) {
 			// Solo si todo ha ido bien insertando, se modifican las variables internas
 			this.nombreUsuario = nombreUsuario;
 			this.email = email;
@@ -64,20 +68,60 @@ public class Usuario {
 		}
 		ConexionBD.desconectar();
 	}
-	
 
 	/**
 	 * Constructor usuario para pantallaLogin
+	 * 
+	 * @throws SQLException
+	 * @throws UsuarioNoExisteException
 	 */
 
-	public Usuario(String email, String contraseña) {
+	/*public Usuario(String email, String contraseña) throws SQLException, UsuarioNoExisteException {
 		super();
+		Statement smt = ConexionBD.conectar();
+		ResultSet cursor = smt
+				.executeQuery("select nombre'" + nombreUsuario + "'from usuarios where email='" + email + "'");
+
+		if (cursor.next()) {
+			this.email = email;
+			this.contraseña = contraseña;
+		} else {
+			ConexionBD.desconectar();
+			throw new UsuarioNoExisteException("No existe ese email en la BD");
+		}
+
 		this.email = email;
 		this.contraseña = contraseña;
-		
-	}
+		ConexionBD.desconectar();
+	}/*
+	/**/
 
-	
+	public Usuario(String email, String contraseña) throws SQLException, ContrasegnaIncorrectaException,
+			UsuarioNoExisteException, ContrasegnaInvalidaException {
+
+		if (!isPassValid(contraseña)) {
+			throw new ContrasegnaInvalidaException("La contraseña debe tener al menos 3 caracteres.");
+		}
+
+		Statement smt = ConexionBD.conectar();
+		ResultSet cursor = smt.executeQuery("select *from usuarios where email = '" + email + "'");
+
+		if (cursor.next()) {
+			this.contraseña = cursor.getString("contraseña");
+			if (!this.contraseña.equals(contraseña)) {
+				ConexionBD.desconectar();
+				throw new ContrasegnaIncorrectaException("La contraseña no es correcta");
+			}
+			this.email = cursor.getString("email");
+			this.nombreUsuario = cursor.getString("nombre");
+		
+		} else {
+			ConexionBD.desconectar();
+			throw new UsuarioNoExisteException("No existe ese email en la BD");
+		}
+		ConexionBD.desconectar();
+	}
+	/**/
 
 	public Usuario() {
 		super();
@@ -91,8 +135,6 @@ public class Usuario {
 	public String getEmail() {
 		return email;
 	}
-
-	
 
 	/**
 	 * Devuelve el valor de contraseña
@@ -174,8 +216,6 @@ public class Usuario {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-
 
 	/**
 	 * Método que da un nuevo valor a la variable contraseña
@@ -283,6 +323,19 @@ public class Usuario {
 	 */
 	public void setCarteraUsuario(float carteraUsuario) {
 		this.carteraUsuario = carteraUsuario;
+	}
+	
+	public static boolean isPassValid(String contraseña) {
+		try {
+			if (contraseña.length() < 3) {
+				return false;
+			} else {
+				return true;
+			}
+		} catch (NullPointerException e) {
+			return false;
+		}
+
 	}
 
 }

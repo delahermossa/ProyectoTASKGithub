@@ -21,8 +21,10 @@ import javax.swing.JComboBox;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import enumeraciones.Ciudad;
-import enumeraciones.SubServicios;
+import enumeraciones.SubBelleza;
 import excepciones.ContrasegnaInvalidaException;
+import enumeraciones.SubColegio;
+import enumeraciones.SubDeporte;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -33,15 +35,18 @@ import javax.swing.border.BevelBorder;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 import javax.swing.JCheckBox;
+import enumeraciones.SubHogar;
+import enumeraciones.SubMascota;
+
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
 
 public class PantallaAltaServicio extends JPanel {
 	private Ventana ventana;
-	private JTextField campoUsuario;
-	private JPasswordField campoContraseña;
-	private JTextField campoEmail;
 	private JButton botonRegistrarse;
 	private JTextField campoDescripcion;
 	private JTextField textoPrecio;
+	private JTextField campoNombreServicio;
 
 	public PantallaAltaServicio(Ventana v) {
 		setBorder(null);
@@ -49,43 +54,95 @@ public class PantallaAltaServicio extends JPanel {
 		this.ventana=v;
 		setLayout(null);
 		
+		JLabel labelEmailDinamico = new JLabel(""+ventana.usuario.getEmail());
+		labelEmailDinamico.setBounds(25, 232, 153, 28);
+		add(labelEmailDinamico);
+		
+		JLabel labelNombreUsuario = new JLabel(""+ventana.usuario.getNombreUsuario());
+		labelNombreUsuario.setBounds(25, 177, 153, 28);
+		add(labelNombreUsuario);
+		
+		JLabel labelEuros = new JLabel("\u20AC");
+		labelEuros.setForeground(new Color(0, 0, 0));
+		labelEuros.setFont(new Font("Century Gothic", Font.BOLD, 20));
+		labelEuros.setBounds(740, 462, 48, 50);
+		add(labelEuros);
+		
+		campoNombreServicio = new JTextField();
+		campoNombreServicio.setHorizontalAlignment(SwingConstants.LEFT);
+		campoNombreServicio.setColumns(10);
+		campoNombreServicio.setBounds(25, 354, 332, 28);
+		add(campoNombreServicio);
+		
+		JLabel labelNombreServicio = new JLabel("Nombre de tu servicio");
+		labelNombreServicio.setForeground(new Color(32, 178, 170));
+		labelNombreServicio.setFont(new Font("Century Gothic", Font.BOLD, 20));
+		labelNombreServicio.setBounds(25, 329, 231, 28);
+		add(labelNombreServicio);
+		
 		textoPrecio = new JTextField();
+		textoPrecio.setHorizontalAlignment(SwingConstants.CENTER);
+		textoPrecio.setFont(new Font("Century Gothic", Font.BOLD, 20));
+		textoPrecio.setForeground(new Color(255, 255, 255));
+		textoPrecio.setBackground(new Color(32, 178, 170));
 		textoPrecio.setColumns(10);
-		textoPrecio.setBounds(679, 438, 76, 50);
+		textoPrecio.setBounds(654, 462, 76, 50);
 		add(textoPrecio);
 		
 		JLabel labelPrecio = new JLabel("Ponle precio!");
 		labelPrecio.setForeground(new Color(32, 178, 170));
-		labelPrecio.setFont(new Font("Century Gothic", Font.BOLD, 20));
-		labelPrecio.setBounds(640, 400, 145, 28);
+		labelPrecio.setFont(new Font("Century Gothic", Font.BOLD, 15));
+		labelPrecio.setBounds(650, 424, 145, 28);
 		add(labelPrecio);
 		
 		JLabel subeFoto = new JLabel("");
 		subeFoto.setIcon(new ImageIcon(PantallaAltaServicio.class.getResource("/imagenes/iconoSubirFoto.png")));
-		subeFoto.setBounds(535, 425, 95, 86);
+		subeFoto.setBounds(523, 445, 95, 86);
 		add(subeFoto);
 		
 		JLabel labelFoto = new JLabel("Sube tu foto");
 		labelFoto.setForeground(new Color(32, 178, 170));
-		labelFoto.setFont(new Font("Century Gothic", Font.BOLD, 20));
-		labelFoto.setBounds(513, 400, 145, 28);
+		labelFoto.setFont(new Font("Century Gothic", Font.BOLD, 15));
+		labelFoto.setBounds(523, 424, 145, 28);
 		add(labelFoto);
 		
-		JComboBox seleccionTipoServicio = new JComboBox();
+		final JComboBox seleccionTipoServicio = new JComboBox();
+		seleccionTipoServicio.setModel(new DefaultComboBoxModel(SubHogar.values()));
 		seleccionTipoServicio.setForeground(Color.WHITE);
 		seleccionTipoServicio.setFont(new Font("Century Gothic", Font.BOLD, 15));
 		seleccionTipoServicio.setBackground(new Color(95, 158, 160));
 		seleccionTipoServicio.setBounds(513, 270, 282, 36);
-		seleccionTipoServicio.setModel(new DefaultComboBoxModel(SubServicios.values()));
 		add(seleccionTipoServicio);
 		
-		JLabel tipoServicio = new JLabel("Elige Servicio");
-		tipoServicio.setForeground(new Color(255, 255, 255));
-		tipoServicio.setFont(new Font("Century Gothic", Font.BOLD, 20));
-		tipoServicio.setBounds(513, 232, 145, 28);
-		add(tipoServicio);
+		JLabel labelSubcattegoria = new JLabel("Elige Servicio");
+		labelSubcattegoria.setForeground(new Color(255, 255, 255));
+		labelSubcattegoria.setFont(new Font("Century Gothic", Font.BOLD, 20));
+		labelSubcattegoria.setBounds(513, 232, 145, 28);
+		add(labelSubcattegoria);
 		
 		final JComboBox seleccionCategoria = new JComboBox();
+		seleccionCategoria.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent arg0) {
+				switch((String)seleccionCategoria.getSelectedItem()) {
+				case "COLEGIO":
+					seleccionTipoServicio.setModel(new DefaultComboBoxModel(SubColegio.values()));
+					break;
+				case "HOGAR":
+					seleccionTipoServicio.setModel(new DefaultComboBoxModel(SubHogar.values()));
+					break;
+				case "BELLEZA":
+					seleccionTipoServicio.setModel(new DefaultComboBoxModel(SubBelleza.values()));
+					break;
+				case "MASCOTA":
+					seleccionTipoServicio.setModel(new DefaultComboBoxModel(SubMascota.values()));
+					break;
+				case "DEPORTE":
+					seleccionTipoServicio.setModel(new DefaultComboBoxModel(SubDeporte.values()));
+					break;
+				
+				}
+			}
+		});
 		seleccionCategoria.setBackground(new Color(95, 158, 160));
 		seleccionCategoria.setForeground(Color.WHITE);
 		seleccionCategoria.setFont(new Font("Century Gothic", Font.BOLD, 15));
@@ -96,7 +153,7 @@ public class PantallaAltaServicio extends JPanel {
 		JLabel labelCategoria = new JLabel("Elige categoria");
 		labelCategoria.setForeground(new Color(255, 255, 255));
 		labelCategoria.setFont(new Font("Century Gothic", Font.BOLD, 20));
-		labelCategoria.setBounds(513, 156, 223, 28);
+		labelCategoria.setBounds(513, 148, 223, 28);
 		add(labelCategoria);
 		
 		JLabel labelTexto2 = new JLabel(" y comenzar a trabajar desde ya!");
@@ -122,47 +179,27 @@ public class PantallaAltaServicio extends JPanel {
 		tituloRegistro.setFont(new Font("Century Gothic", Font.BOLD, 30));
 		add(tituloRegistro);
 
-		JLabel labelUsuario = new JLabel("Usuario");
-		labelUsuario.setForeground(Color.GRAY);
-		labelUsuario.setFont(new Font("Century Gothic", Font.BOLD, 20));
-		labelUsuario.setBounds(25, 156, 84, 38);
-		add(labelUsuario);
-
-		campoUsuario = new JTextField();
-		campoUsuario.setBounds(25, 193, 332, 28);
-		add(campoUsuario);
-		campoUsuario.setColumns(10);
-
-		JLabel labelContraseña = new JLabel("Contraseña");
-		labelContraseña.setForeground(Color.GRAY);
-		labelContraseña.setFont(new Font("Century Gothic", Font.BOLD, 20));
-		labelContraseña.setBounds(22, 219, 153, 42);
-		add(labelContraseña);
-
-		campoContraseña = new JPasswordField();
-		campoContraseña.setBounds(25, 258, 332, 32);
-		add(campoContraseña);
+		JLabel labelNombre = new JLabel("Nombre usuario");
+		labelNombre.setForeground(Color.WHITE);
+		labelNombre.setFont(new Font("Century Gothic", Font.BOLD, 15));
+		labelNombre.setBounds(25, 150, 153, 28);
+		add(labelNombre);
 		JLabel labelEmail = new JLabel("Email");
-		labelEmail.setForeground(Color.GRAY);
-		labelEmail.setFont(new Font("Century Gothic", Font.BOLD, 20));
-		labelEmail.setBounds(25, 300, 84, 27);
+		labelEmail.setForeground(Color.WHITE);
+		labelEmail.setFont(new Font("Century Gothic", Font.BOLD, 15));
+		labelEmail.setBounds(25, 200, 84, 27);
 		labelEmail.setBackground(Color.WHITE);
 		add(labelEmail);
 
-		campoEmail = new JTextField();
-		campoEmail.setBounds(25, 329, 332, 28);
-		add(campoEmail);
-		campoEmail.setColumns(10);
-
 		JLabel labelDireccion = new JLabel("Descripcion");
-		labelDireccion.setForeground(Color.GRAY);
+		labelDireccion.setForeground(new Color(32, 178, 170));
 		labelDireccion.setFont(new Font("Century Gothic", Font.BOLD, 20));
-		labelDireccion.setBounds(25, 367, 117, 36);
+		labelDireccion.setBounds(31, 392, 117, 36);
 		add(labelDireccion);
 
 		campoDescripcion = new JTextField();
 		campoDescripcion.setHorizontalAlignment(SwingConstants.LEFT);
-		campoDescripcion.setBounds(25, 400, 332, 124);
+		campoDescripcion.setBounds(25, 424, 332, 100);
 		add(campoDescripcion);
 		campoDescripcion.setColumns(10);
 		
@@ -208,46 +245,45 @@ public class PantallaAltaServicio extends JPanel {
 		
 		
 		JLabel labelFondo = new JLabel("");
+		labelFondo.setFont(new Font("Century Gothic", Font.BOLD, 20));
+		labelFondo.setForeground(new Color(255, 255, 255));
 		labelFondo.setIcon(new ImageIcon(PantallaAltaServicio.class.getResource("/imagenes/fondoServicios.jpg")));
 		labelFondo.setBounds(0, 10, 853, 657);
 		add(labelFondo);
-		
-		JButton button = new JButton("New button");
-		button.setBounds(157, 119, 85, 21);
-		add(button);
 		ventana = v;
 
-		/**
+		/** ARREGLAR
 		 * Lo creamos abajo para asegurarnos de que pueda coger todas las variables
 		 */
-		botonRegistrarse.addMouseListener(new MouseAdapter() {
+		/*botonRegistrarse.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				String nombreUsuario = campoUsuario.getText();/* Captura el nombre insertado */
 				String contraseña = new String(campoContraseña.getPassword());
 				String email = campoEmail.getText();
-				Ciudad ciudad = (Ciudad) seleccionCiudad.getSelectedItem();
+				Ciudad ciudad = (Ciudad) seleccionCiudad.getSelectedItem();*/
+				
 
 				/**
 				 * Creamos un nuevo usuario
 				 */
 
-				try {
+				/*try {
 					// new Usuario(nombreUsuario,email,contraseña,true);
 					/**
 					 * JOptionPane. showMessage Dialog ventana emergente cuando no se realiza bien
 					 * el resgistro 4 argumentos 1ª ventana padre 2º contenido mensaje 3º titulo 4º
 					 * Icono que te sale en el mensaje
 					 */
-					JOptionPane.showMessageDialog(ventana, "Registrado con éxito", "Registro completado",
+					/*JOptionPane.showMessageDialog(ventana, "Registrado con éxito", "Registro completado",
 							+JOptionPane.PLAIN_MESSAGE);
-					ventana.irAPantalla("login");/* Una vez registrado entra en la ventana de login */
+					ventana.irAPantalla("login");
 
 				} catch (Exception e1) {
 					JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 				}
 			}
-		});
+		});*/
 
 	}
 }
+
