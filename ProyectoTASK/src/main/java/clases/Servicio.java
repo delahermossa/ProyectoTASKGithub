@@ -26,16 +26,37 @@ public class Servicio {
 	public Servicio() {
 		super();
 	}
+	
+	
+	
 
-	public Servicio(String nombreServicio, float precioServicio, String descripcion, Ciudad ciudad,
-			BufferedImage fotoUsuario) {
+	public Servicio(String nombreServicio, String categoria, String subCategoria, float precioServicio,
+			String descripcion, Ciudad ciudad) throws SQLException {
 		super();
-		this.nombreServicio = nombreServicio;
-		this.precioServicio = precioServicio;
-		this.descripcion = descripcion;
-		this.ciudad = ciudad;
-		this.fotoUsuario = fotoUsuario;
+		
+		
+		Statement smt = ConexionBD.conectar();
+		if (smt.executeUpdate("insert into servicios (nombreCategoria,precio,descripcion,subcategoria,nombreServicio)values('" + categoria + "','"
+				+ precioServicio + "','" + descripcion + "','" + subCategoria + "','" + nombreServicio + "')") > 0) {
+		
+			this.nombreServicio = nombreServicio;
+			this.categoria = categoria;
+			this.subCategoria = subCategoria;
+			this.precioServicio = precioServicio;
+			this.descripcion = descripcion;
+			this.ciudad = ciudad;
+			
+		} else {
+			// Si no se ha podido insertar, lanzo un error: Algo ha ido mal.
+			ConexionBD.desconectar();
+			throw new SQLException("No se ha podido insertar");
+		}
+		ConexionBD.desconectar();
 	}
+
+	
+	
+	
 
 	/**
 	 * Devuelve el valor de nombreServicio

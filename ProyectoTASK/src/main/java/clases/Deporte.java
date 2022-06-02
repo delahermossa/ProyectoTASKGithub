@@ -1,6 +1,7 @@
 package clases;
 
 import java.awt.image.BufferedImage;
+import java.sql.SQLException;
 
 import enumeraciones.Ciudad;
 import enumeraciones.SubDeporte;
@@ -9,12 +10,13 @@ public class Deporte extends Servicio{
 	
 	public SubDeporte subDeporte;
 
-	public Deporte(String nombre, float precio, String descripcion, Ciudad ciudad, BufferedImage iconoCategoria,
-			SubDeporte subDeporte) {
-		super(nombre, precio, descripcion, ciudad, iconoCategoria);
+
+	public Deporte(String nombreServicio, String categoria, String subCategoria, float precioServicio,
+			String descripcion, Ciudad ciudad, SubDeporte subDeporte) throws SQLException {
+		super(nombreServicio, categoria, subCategoria, precioServicio, descripcion, ciudad);
 		this.subDeporte = subDeporte;
 	}
-	
+
 	public Deporte() {
 		super();
 	}

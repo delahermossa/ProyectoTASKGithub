@@ -34,7 +34,7 @@ public class PantallaListadoServicios extends JPanel {
 		JPanel panel = new JPanel();
 		
 		/**
-		 * Bucle forque recorre todos los servicios añadidos en cada una de las categorias 
+		 * Bucle for que recorre todos los servicios añadidos en cada una de las categorias 
 		 * y los muestra en la PantallaListadoServicios
 		 */
 		/*cambiar imagen para que se cargue*/

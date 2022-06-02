@@ -1,6 +1,7 @@
 package clases;
 
 import java.awt.image.BufferedImage;
+import java.sql.SQLException;
 
 import enumeraciones.Ciudad;
 import enumeraciones.SubBelleza;
@@ -9,9 +10,11 @@ public class Belleza extends Servicio{
 	
 	public SubBelleza subBelleza;
 
-	public Belleza(String nombre, float precio, String descripcion, Ciudad ciudad, BufferedImage iconoCategoria,
-			SubBelleza subBelleza) {
-		super(nombre, precio, descripcion, ciudad, iconoCategoria);
+	
+
+	public Belleza(String nombreServicio, String categoria, String subCategoria, float precioServicio,
+			String descripcion, Ciudad ciudad, SubBelleza subBelleza) throws SQLException {
+		super(nombreServicio, categoria, subCategoria, precioServicio, descripcion, ciudad);
 		this.subBelleza = subBelleza;
 	}
 
