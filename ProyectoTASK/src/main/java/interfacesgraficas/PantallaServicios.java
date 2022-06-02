@@ -173,13 +173,6 @@ public class PantallaServicios extends JPanel {
 		add(botonManitas);
 
 		JButton botonLimpieza = new JButton("LIMPIEZA");
-		botonLimpieza.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				ventana.irAPantalla("limpieza");
-
-			}
-		});
 		botonLimpieza.setBackground(new Color(95, 158, 160));
 		botonLimpieza.setForeground(new Color(255, 255, 255));
 		botonLimpieza.setFont(new Font("Century Gothic", Font.BOLD, 15));
@@ -201,7 +194,7 @@ public class PantallaServicios extends JPanel {
 		botonAtras.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ventana.irAPantalla("servicios");
+				ventana.irAPantalla("login");
 			}
 		});
 		add(botonAtras);

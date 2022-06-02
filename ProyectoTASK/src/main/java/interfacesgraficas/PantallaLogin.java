@@ -15,7 +15,6 @@ import componentesvisuales.BotonVerde;
 import excepciones.ContrasegnaIncorrectaException;
 import excepciones.ContrasegnaInvalidaException;
 import excepciones.UsuarioNoExisteException;
-import utils.Utils;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -52,8 +51,8 @@ public class PantallaLogin extends JPanel {
 				String email = campoUsuario.getText();
 				String contraseña = new String(campoContraseña.getPassword());
 				try {
-					Utils.currentUser = new Usuario(email, contraseña);
-					JOptionPane.showMessageDialog(ventana, "Bienvenid@ " + Utils.currentUser.getNombreUsuario(),
+					ventana.usuario=new Usuario(email, contraseña);
+					JOptionPane.showMessageDialog(ventana, "Bienvenid@ " + ventana.usuario.getNombreUsuario(),
 							"Inicio de sesion con éxito ", JOptionPane.INFORMATION_MESSAGE);
 					ventana.irAPantalla("servicios");
 

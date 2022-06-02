@@ -4,6 +4,12 @@ public class UsuarioServicio {
 
 	private Usuario usuario;
 	private Servicio servicio;
+	/**
+	 * Creación de esta clase para poder listar servicios ya que tenemos una tabla intermedia en BD entre
+	 * Usuarios y servicios y necesitamos recoger la informacion de ambas partes
+	 * @param usuario
+	 * @param servicio
+	 */
 
 	public UsuarioServicio(Usuario usuario, Servicio servicio) {
 		super();

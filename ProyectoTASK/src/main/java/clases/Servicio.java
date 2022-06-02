@@ -180,7 +180,13 @@ public class Servicio {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-
+	/**
+	 * Función que recorre la tabla usuario y servicio y realiza un select de los servicios para mostrar
+	 * en la PantallaListadoServicios los servicios recogidos por cada categoria 
+	 * @param servicio
+	 * @return
+	 * @throws SQLException
+	 */
 	public static ArrayList<UsuarioServicio> consultarServicios(String servicio) throws SQLException {
 		ArrayList<UsuarioServicio> listadoServicios = new ArrayList<>();
 		Statement smt = ConexionBD.conectar();
@@ -189,7 +195,7 @@ public class Servicio {
 		// estar
 		// una vez, porque es la PK
 		while (cursor.next()) {
-			System.out.println("jajjajaj");
+			System.out.println("Servicio");
 			UsuarioServicio s = new UsuarioServicio();
 			Usuario usu = new Usuario();
 			Servicio servicios = new Servicio();

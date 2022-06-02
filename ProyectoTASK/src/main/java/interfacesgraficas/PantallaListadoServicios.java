@@ -32,6 +32,12 @@ public class PantallaListadoServicios extends JPanel {
 		add(scrollPane, BorderLayout.CENTER);
 
 		JPanel panel = new JPanel();
+		
+		/**
+		 * Bucle forque recorre todos los servicios añadidos en cada una de las categorias 
+		 * y los muestra en la PantallaListadoServicios
+		 */
+		/*cambiar imagen para que se cargue*/
 
 		try {
 			ArrayList<UsuarioServicio> usuServicio = Servicio.consultarServicios("Hogar");
@@ -47,12 +53,12 @@ public class PantallaListadoServicios extends JPanel {
 				precio.setBounds(623, 44, 62, 46);
 				usuarioServicio.add(precio);
 
-				JLabel descropcionUsuario = new JLabel(usuarioServicios.getServicio().getDescripcion());
-				descropcionUsuario.setFont(new Font("Tahoma", Font.BOLD, 15));
-				descropcionUsuario.setBounds(176, 65, 423, 36);
-				usuarioServicio.add(descropcionUsuario);
+				JLabel descripcionUsuario = new JLabel(usuarioServicios.getServicio().getDescripcion());
+				descripcionUsuario.setFont(new Font("Tahoma", Font.BOLD, 15));
+				descripcionUsuario.setBounds(176, 65, 423, 36);
+				usuarioServicio.add(descripcionUsuario);
 
-				JLabel nombre = new JLabel("Paco");
+				JLabel nombre = new JLabel("Paco");//cambiar
 				nombre.setFont(new Font("Century Gothic", Font.BOLD, 15));
 				nombre.setHorizontalAlignment(SwingConstants.CENTER);
 				nombre.setBounds(176, 42, 45, 13);

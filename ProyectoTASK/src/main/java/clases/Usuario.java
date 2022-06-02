@@ -1,16 +1,18 @@
 package clases;
 
 import java.awt.image.BufferedImage;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import enumeraciones.Ciudad;
+import utils.ConexionBD;
 
 public class Usuario {
 
 	private String nombreUsuario;
 	private float carteraUsuario;
 	private String email;
-	private String apellidos;
 	private String contraseña;
 	private String direccion;
 	private Ciudad ciudad;
@@ -20,7 +22,7 @@ public class Usuario {
 	private ArrayList<Valoracion> valoracionUsuarioVendedor;
 	private BufferedImage imagenPersona;
 
-	public Usuario(String nombreUsuario, float carteraUsuario, String email, String apellidos, String contraseña,
+	public Usuario(String nombreUsuario, float carteraUsuario, String email, String contraseña,
 			String direccion, Ciudad ciudad, boolean esAdmin, ArrayList<Servicio> serviciosOfrecidos,
 			ArrayList<Cita> citasAgendadas, ArrayList<Valoracion> valoracionUsuarioVendedor,
 			BufferedImage imagenPersona) {
@@ -28,7 +30,6 @@ public class Usuario {
 		this.nombreUsuario = nombreUsuario;
 		this.carteraUsuario = carteraUsuario;
 		this.email = email;
-		this.apellidos = apellidos;
 		this.contraseña = contraseña;
 		this.direccion = direccion;
 		this.ciudad = ciudad;
@@ -38,6 +39,32 @@ public class Usuario {
 		this.valoracionUsuarioVendedor = valoracionUsuarioVendedor;
 		this.imagenPersona = imagenPersona;
 	}
+	
+	/**
+	 * Constructor para pantalla registro
+	 * @throws SQLException 
+	 */
+	public Usuario(String nombreUsuario, String email, String contraseña, String direccion, Ciudad ciudad) throws SQLException {
+		super();
+		
+		
+		Statement smt = ConexionBD.conectar();
+		if (smt.executeUpdate(
+				"insert into usuarios (email,contraseña,nombre,direccion,ciudad)values('" + email + "','" + contraseña + "','" + nombreUsuario + "','" + direccion + "','" + ciudad+"')") > 0) {
+			// Solo si todo ha ido bien insertando, se modifican las variables internas
+			this.nombreUsuario = nombreUsuario;
+			this.email = email;
+			this.contraseña = contraseña;
+			this.direccion = direccion;
+			this.ciudad = ciudad;
+		} else {
+			// Si no se ha podido insertar, lanzo un error: Algo ha ido mal.
+			ConexionBD.desconectar();
+			throw new SQLException("No se ha podido insertar");
+		}
+		ConexionBD.desconectar();
+	}
+	
 
 	/**
 	 * Constructor usuario para pantallaLogin
@@ -47,7 +74,10 @@ public class Usuario {
 		super();
 		this.email = email;
 		this.contraseña = contraseña;
+		
 	}
+
+	
 
 	public Usuario() {
 		super();
@@ -62,14 +92,7 @@ public class Usuario {
 		return email;
 	}
 
-	/**
-	 * Devuelve el valor de apellidos
-	 * 
-	 * @return String devuelve el valor de apellidos
-	 */
-	public String getApellidos() {
-		return apellidos;
-	}
+	
 
 	/**
 	 * Devuelve el valor de contraseña
@@ -152,14 +175,7 @@ public class Usuario {
 		this.email = email;
 	}
 
-	/**
-	 * Método que da un nuevo valor a la variable apellidos
-	 * 
-	 * @param apellidos el nuevo valor de apellidos
-	 */
-	public void setApellidos(String apellidos) {
-		this.apellidos = apellidos;
-	}
+
 
 	/**
 	 * Método que da un nuevo valor a la variable contraseña

@@ -90,7 +90,7 @@ public class PantallaAltaServicio extends JPanel {
 		seleccionCategoria.setForeground(Color.WHITE);
 		seleccionCategoria.setFont(new Font("Century Gothic", Font.BOLD, 15));
 		seleccionCategoria.setBounds(513, 186, 282, 36);
-		seleccionCategoria.setModel(new DefaultComboBoxModel(SubServicios.values()));
+		seleccionCategoria.setModel(new DefaultComboBoxModel(new String[] {"HOGAR", "COLEGIO", "BELLEZA", "DEPORTE", "MASCOTA"}));
 		add(seleccionCategoria);
 		
 		JLabel labelCategoria = new JLabel("Elige categoria");

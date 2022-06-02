@@ -17,6 +17,7 @@ public class Ventana extends JFrame {
 	 * Representa la pantalla actual por la que estoy navegando
 	 */
 	private JPanel pantallaAtual;
+	protected Usuario usuario;
 	/**
 	 * Es el usuario que inicia sesion en la pantalla login Hasta entonces vale null
 	 * Lo tenemos aquí para que esté disponible en todas las pantallas
@@ -74,49 +75,7 @@ public class Ventana extends JFrame {
 		case"listadoservicios":
 			this.pantallaAtual=new PantallaListadoServicios(this);
 			break;
-		case "manitas":
-			this.pantallaAtual=new PantallaManitas(this);
-			break;
-		case"chef":
-			this.pantallaAtual=new PantallaChef(this);
-			break;
-		case"musica":
-			this.pantallaAtual=new PantallaMusica(this);
-			break;
-		case"mates":
-			this.pantallaAtual=new PantallaMates(this);
-			break;
-		case"lengua":
-			this.pantallaAtual=new PantallaLengua(this);
-			break;
-		case"manicura":
-			this.pantallaAtual=new PantallaManicura(this);
-			break;
-		case"estilismo":
-			this.pantallaAtual=new PantallaEstilismo(this);
-			break;
-		case "facial":
-			this.pantallaAtual=new PantallaFacial(this);
-			break;
-		case "coach":
-			this.pantallaAtual=new PantallaCoach(this);
-			break;
-		case "padel":
-			this.pantallaAtual=new PantallaPadel(this);
-			break;
-		case "futbol":
-			this.pantallaAtual=new PantallaFutbol(this);
-			break;
-		case "paseo":
-			this.pantallaAtual= new PantallaPaseo(this);
-			break;
-		case "medico":
-			this.pantallaAtual=new PantallaMedico(this);
-			break;
-		case "peluquero":
-			this.pantallaAtual=new PantallaPeluquero(this);
-			break;
-			
+
 			
 
 		}

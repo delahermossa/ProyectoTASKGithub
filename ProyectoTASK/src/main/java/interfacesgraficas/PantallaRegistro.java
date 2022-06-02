@@ -22,7 +22,6 @@ import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import enumeraciones.Ciudad;
 import excepciones.ContrasegnaInvalidaException;
-import utils.Utils;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -176,13 +175,14 @@ public class PantallaRegistro extends JPanel {
 				String contraseña = new String(campoContraseña.getPassword());
 				String email = campoEmail.getText();
 				Ciudad ciudad = (Ciudad) seleccionCiudad.getSelectedItem();
+				String direccion= campoDireccion.getText();
 
 				/**
 				 * Creamos un nuevo usuario
 				 */
 
 				try {
-					Utils.currentUser = new Usuario();
+					 new Usuario(nombreUsuario, email, contraseña, direccion, ciudad);
 					/**
 					 * JOptionPane. showMessage Dialog ventana emergente cuando no se realiza bien
 					 * el resgistro 4 argumentos 1ª ventana padre 2º contenido mensaje 3º titulo 4º
