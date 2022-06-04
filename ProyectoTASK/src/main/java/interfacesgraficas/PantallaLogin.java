@@ -1,33 +1,26 @@
 package interfacesgraficas;
 
-import javax.swing.JPanel;
-import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.border.Border;
-import javax.swing.border.MatteBorder;
 
 import clases.Usuario;
 import componentesvisuales.BotonAzul;
-import componentesvisuales.BotonRojo;
 import componentesvisuales.BotonVerde;
-import excepciones.ContrasegnaIncorrectaException;
-import excepciones.ContrasegnaInvalidaException;
-import excepciones.UsuarioNoExisteException;
-
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-import javax.swing.JPasswordField;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.sql.SQLException;
-import java.awt.SystemColor;
-import javax.swing.ImageIcon;
-import javax.swing.UIManager;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import utils.Utils;
 
 public class PantallaLogin extends JPanel {
 	private Ventana ventana;
@@ -51,8 +44,8 @@ public class PantallaLogin extends JPanel {
 				String email = campoUsuario.getText();
 				String contraseña = new String(campoContraseña.getPassword());
 				try {
-					ventana.usuario=new Usuario(email, contraseña);
-					JOptionPane.showMessageDialog(ventana, "Bienvenid@ " + ventana.usuario.getNombreUsuario(),
+					Utils.currentUser = new Usuario(email, contraseña);
+					JOptionPane.showMessageDialog(ventana, "Bienvenid@ " + Utils.currentUser.getNombreUsuario(),
 							"Inicio de sesion con éxito ", JOptionPane.INFORMATION_MESSAGE);
 					ventana.irAPantalla("servicios");
 
@@ -93,7 +86,7 @@ public class PantallaLogin extends JPanel {
 		etiquetaTitulo.setBounds(191, 45, 480, 44);
 		add(etiquetaTitulo);
 
-		etiquetaEmail = new JLabel("Usuario");
+		etiquetaEmail = new JLabel("Email");
 		etiquetaEmail.setForeground(Color.GRAY);
 		etiquetaEmail.setFont(new Font("Century Gothic", Font.BOLD, 20));
 		etiquetaEmail.setBounds(211, 99, 135, 45);
@@ -118,30 +111,23 @@ public class PantallaLogin extends JPanel {
 		campoContraseña.setEchoChar('*');
 		campoContraseña.setBounds(456, 137, 215, 33);
 		add(campoContraseña);
-		
+
 		JLabel LabelIcono = new JLabel("");
 		LabelIcono.setIcon(new ImageIcon(PantallaLogin.class.getResource("/imagenes/iconoPrincipal.png")));
 		LabelIcono.setBounds(79, 10, 102, 116);
 		add(LabelIcono);
-		
+
 		JLabel LabelRegistro = new JLabel("\u00BFA\u00FAn no tienes cuenta...? Reg\u00EDstrate ya!");
 		LabelRegistro.setForeground(new Color(95, 158, 160));
 		LabelRegistro.setFont(new Font("Century Gothic", Font.BOLD, 20));
 		LabelRegistro.setBounds(37, 552, 492, 33);
 		add(LabelRegistro);
-		
+
 		JLabel FondoCiudad = new JLabel("");
 		FondoCiudad.setForeground(new Color(95, 158, 160));
 		FondoCiudad.setIcon(new ImageIcon(PantallaLogin.class.getResource("/imagenes/staf.jpg")));
 		FondoCiudad.setBounds(-23, 10, 929, 670);
 		add(FondoCiudad);
-		
-		
-		
-		
-		
-	
-		
-		
+
 	}
 }

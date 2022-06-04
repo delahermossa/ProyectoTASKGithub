@@ -13,8 +13,8 @@ public class Hogar extends Servicio {
 	
 	
 	public Hogar(String nombreServicio, String categoria, String subCategoria, float precioServicio, String descripcion,
-			Ciudad ciudad, SubHogar subHogar) throws SQLException {
-		super(nombreServicio, categoria, subCategoria, precioServicio, descripcion, ciudad);
+			Ciudad ciudad, SubHogar subHogar, String email) throws SQLException {
+		super(nombreServicio, categoria, subCategoria, precioServicio, descripcion, ciudad, email);
 		this.subHogar = subHogar;
 	}
 

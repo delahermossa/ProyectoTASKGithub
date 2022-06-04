@@ -13,8 +13,8 @@ public class Colegio extends Servicio {
 	
 	
 	public Colegio(String nombreServicio, String categoria, String subCategoria, float precioServicio,
-			String descripcion, Ciudad ciudad, SubColegio subColegio) throws SQLException {
-		super(nombreServicio, categoria, subCategoria, precioServicio, descripcion, ciudad);
+			String descripcion, Ciudad ciudad, SubColegio subColegio, String email) throws SQLException {
+		super(nombreServicio, categoria, subCategoria, precioServicio, descripcion, ciudad, email);
 		this.subColegio = subColegio;
 	}
 

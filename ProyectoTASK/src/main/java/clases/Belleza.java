@@ -13,8 +13,8 @@ public class Belleza extends Servicio{
 	
 
 	public Belleza(String nombreServicio, String categoria, String subCategoria, float precioServicio,
-			String descripcion, Ciudad ciudad, SubBelleza subBelleza) throws SQLException {
-		super(nombreServicio, categoria, subCategoria, precioServicio, descripcion, ciudad);
+			String descripcion, Ciudad ciudad, SubBelleza subBelleza, String email) throws SQLException {
+		super(nombreServicio, categoria, subCategoria, precioServicio, descripcion, ciudad, email);
 		this.subBelleza = subBelleza;
 	}
 

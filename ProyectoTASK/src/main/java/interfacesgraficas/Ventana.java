@@ -7,9 +7,11 @@ import java.util.Iterator;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import clases.Usuario;
+import utils.Utils;
 
 public class Ventana extends JFrame {
 
@@ -17,14 +19,13 @@ public class Ventana extends JFrame {
 	 * Representa la pantalla actual por la que estoy navegando
 	 */
 	private JPanel pantallaAtual;
-	protected Usuario usuario;
+
 	/**
 	 * Es el usuario que inicia sesion en la pantalla login Hasta entonces vale null
 	 * Lo tenemos aquí para que esté disponible en todas las pantallas
 	 */
 
-
-	public Ventana() {
+	public Ventana(String[] args) {
 
 		this.setSize(850, 650);
 		this.setLocationRelativeTo(null);
@@ -38,7 +39,24 @@ public class Ventana extends JFrame {
 		this.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setResizable(false);
-		this.pantallaAtual = new PantallaLogin(this);
+		if (args.length > 0) {
+			String email = args[0];
+			String contraseña = args[1];
+			try {
+				Utils.currentUser = new Usuario(email, contraseña);
+
+				JOptionPane.showMessageDialog(this, "Bienvenid@ " + Utils.currentUser.getNombreUsuario(),
+						"Inicio de sesion con éxito ", JOptionPane.INFORMATION_MESSAGE);
+				this.pantallaAtual = new PantallaServicios(this);
+
+			} catch (Exception e1) {
+				JOptionPane.showMessageDialog(this, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+				this.pantallaAtual = new PantallaLogin(this);
+			}
+		} else {
+			this.pantallaAtual = new PantallaLogin(this);
+		}
+
 		this.setContentPane(this.pantallaAtual);
 		this.setVisible(true);
 	}
@@ -66,17 +84,26 @@ public class Ventana extends JFrame {
 			this.pantallaAtual = new PantallaAltaServicio(this);
 			break;
 		case "contratarservicio":
-			this.pantallaAtual=new PantallaContratarServicio(this);
+			this.pantallaAtual = new PantallaContratarServicio(this);
 			break;
 		case "pantallausuario":
-			this.pantallaAtual=new PantallaUsuario(this);
-			break;
-			
-		case"listadoservicios":
-			this.pantallaAtual=new PantallaListadoServicios(this);
+			this.pantallaAtual = new PantallaUsuario(this);
 			break;
 
-			
+		}
+		this.pantallaAtual.setVisible(true);
+		this.setContentPane(pantallaAtual);
+
+	}
+
+	public void irAPantalla(String nombrePantalla, String boton) {
+		this.pantallaAtual.setVisible(false);
+		this.pantallaAtual = null;
+
+		switch (nombrePantalla) {
+		case "listadoservicios":
+			this.pantallaAtual = new PantallaListadoServicios(this, boton);
+			break;
 
 		}
 		this.pantallaAtual.setVisible(true);

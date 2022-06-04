@@ -1,46 +1,33 @@
 package interfacesgraficas;
 
-import javax.swing.JPanel;
-import java.awt.GridBagLayout;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
+import java.awt.Color;
 import java.awt.Font;
-import javax.swing.JTextField;
-
-import clases.Servicio;
-import clases.Usuario;
-
-import javax.swing.JPasswordField;
-import javax.swing.JRadioButton;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JComboBox;
-import javax.swing.ButtonGroup;
-import javax.swing.DefaultComboBoxModel;
-import enumeraciones.Ciudad;
-import enumeraciones.SubBelleza;
-import excepciones.ContrasegnaInvalidaException;
-import enumeraciones.SubColegio;
-import enumeraciones.SubDeporte;
-
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
-import java.awt.Color;
-import javax.swing.border.SoftBevelBorder;
-import javax.swing.border.BevelBorder;
+
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.JCheckBox;
+
+import clases.Servicio;
+import enumeraciones.Ciudad;
+import enumeraciones.SubBelleza;
+import enumeraciones.SubColegio;
+import enumeraciones.SubDeporte;
 import enumeraciones.SubHogar;
 import enumeraciones.SubMascota;
-
-import java.awt.event.ItemListener;
-import java.awt.event.ItemEvent;
+import utils.Utils;
 
 public class PantallaAltaServicio extends JPanel {
 	private Ventana ventana;
@@ -55,11 +42,11 @@ public class PantallaAltaServicio extends JPanel {
 		this.ventana = v;
 		setLayout(null);
 
-		JLabel labelEmailDinamico = new JLabel("" + ventana.usuario.getEmail());
+		JLabel labelEmailDinamico = new JLabel("" + Utils.currentUser.getEmail());
 		labelEmailDinamico.setBounds(25, 232, 153, 28);
 		add(labelEmailDinamico);
 
-		JLabel labelNombreUsuario = new JLabel("" + ventana.usuario.getNombreUsuario());
+		JLabel labelNombreUsuario = new JLabel("" + Utils.currentUser.getNombreUsuario());
 		labelNombreUsuario.setBounds(25, 177, 153, 28);
 		add(labelNombreUsuario);
 
@@ -211,16 +198,8 @@ public class PantallaAltaServicio extends JPanel {
 		labelCiudad.setBounds(513, 316, 145, 28);
 		add(labelCiudad);
 
-		/**
-		 * Con buttonGroup conseguimos que se seleccione una de als opciones y no las 3
-		 */
-
 		botonRegistrarse = new JButton("Registrar Servicio");
-		botonRegistrarse.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
 
-			}
-		});
 		botonRegistrarse.setBackground(new Color(32, 178, 170));
 		botonRegistrarse.setFont(new Font("Century Gothic", Font.BOLD, 20));
 		botonRegistrarse.setForeground(new Color(255, 255, 255));
@@ -279,7 +258,7 @@ public class PantallaAltaServicio extends JPanel {
 
 				try {
 					new Servicio(campoNombreServ, categoria, subCategoria, Float.valueOf(textoPrec), campoDescrip,
-							ciudad);
+							ciudad, Utils.currentUser.getEmail());
 				} catch (NumberFormatException e2) {
 					// TODO Auto-generated catch block
 					e2.printStackTrace();
@@ -301,7 +280,7 @@ public class PantallaAltaServicio extends JPanel {
 					 */
 					JOptionPane.showMessageDialog(ventana, "Registrado con éxito", "Registro completado",
 							+JOptionPane.PLAIN_MESSAGE);
-					ventana.irAPantalla("login");
+					ventana.irAPantalla("servicios");
 
 				} catch (Exception e1) {
 					JOptionPane.showMessageDialog(ventana, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);

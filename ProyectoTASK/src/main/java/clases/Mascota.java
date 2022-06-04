@@ -11,13 +11,11 @@ public class Mascota extends Servicio {
 	public SubMascota subMascota;
 
 	public Mascota(String nombreServicio, String categoria, String subCategoria, float precioServicio,
-			String descripcion, Ciudad ciudad, SubMascota subMascota) throws SQLException {
-		super(nombreServicio, categoria, subCategoria, precioServicio, descripcion, ciudad);
+			String descripcion, Ciudad ciudad, SubMascota subMascota, String email) throws SQLException {
+		super(nombreServicio, categoria, subCategoria, precioServicio, descripcion, ciudad, email);
 		this.subMascota = subMascota;
 	}
-	
-	
-	
+
 	public Mascota() {
 		// TODO Auto-generated constructor stub
 	}

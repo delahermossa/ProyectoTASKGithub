@@ -1,15 +1,5 @@
 package interfacesgraficas;
 
-import javax.swing.JPanel;
-
-import enumeraciones.Ciudad;
-import enumeraciones.SubBelleza;
-import enumeraciones.SubColegio;
-import enumeraciones.SubDeporte;
-import enumeraciones.SubHogar;
-import enumeraciones.SubMascota;
-
-import javax.swing.JLabel;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -17,10 +7,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
-import javax.swing.JComboBox;
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 public class PantallaServicios extends JPanel {
@@ -76,6 +66,8 @@ public class PantallaServicios extends JPanel {
 		botonPeluquero.setFont(new Font("Century Gothic", Font.BOLD, 15));
 		botonPeluquero.setBackground(new Color(95, 158, 160));
 		botonPeluquero.setBounds(686, 440, 121, 27);
+		botonPeluquero.addActionListener(new AcionBoton());
+
 		add(botonPeluquero);
 
 		JButton botonMedico = new JButton("MEDICO");
@@ -83,6 +75,8 @@ public class PantallaServicios extends JPanel {
 		botonMedico.setFont(new Font("Century Gothic", Font.BOLD, 15));
 		botonMedico.setForeground(new Color(255, 255, 255));
 		botonMedico.setBounds(685, 400, 121, 30);
+		botonMedico.addActionListener(new AcionBoton());
+
 		add(botonMedico);
 
 		JButton botonPaseo = new JButton("PASEO");
@@ -97,6 +91,8 @@ public class PantallaServicios extends JPanel {
 		botonFutbol.setForeground(new Color(255, 255, 255));
 		botonFutbol.setFont(new Font("Century Gothic", Font.BOLD, 15));
 		botonFutbol.setBounds(527, 440, 129, 28);
+		botonFutbol.addActionListener(new AcionBoton());
+
 		add(botonFutbol);
 
 		JButton botonPadel = new JButton("PADEL");
@@ -104,6 +100,8 @@ public class PantallaServicios extends JPanel {
 		botonPadel.setFont(new Font("Century Gothic", Font.BOLD, 15));
 		botonPadel.setBackground(new Color(95, 158, 160));
 		botonPadel.setBounds(527, 400, 129, 30);
+		botonPadel.addActionListener(new AcionBoton());
+
 		add(botonPadel);
 
 		JButton botonCoach = new JButton("COACH");
@@ -111,6 +109,8 @@ public class PantallaServicios extends JPanel {
 		botonCoach.setFont(new Font("Century Gothic", Font.BOLD, 15));
 		botonCoach.setBackground(new Color(95, 158, 160));
 		botonCoach.setBounds(527, 361, 129, 29);
+		botonCoach.addActionListener(new AcionBoton());
+
 		add(botonCoach);
 
 		JButton botonFacial = new JButton("FACIAL");
@@ -118,6 +118,8 @@ public class PantallaServicios extends JPanel {
 		botonFacial.setFont(new Font("Century Gothic", Font.BOLD, 15));
 		botonFacial.setBackground(new Color(95, 158, 160));
 		botonFacial.setBounds(378, 440, 121, 28);
+		botonFacial.addActionListener(new AcionBoton());
+
 		add(botonFacial);
 
 		JButton botonEstilismo = new JButton("ESTILISMO");
@@ -125,6 +127,8 @@ public class PantallaServicios extends JPanel {
 		botonEstilismo.setFont(new Font("Century Gothic", Font.BOLD, 15));
 		botonEstilismo.setForeground(new Color(255, 255, 255));
 		botonEstilismo.setBounds(378, 400, 121, 30);
+		botonEstilismo.addActionListener(new AcionBoton());
+
 		add(botonEstilismo);
 
 		JButton botonManicura = new JButton("MANICURA");
@@ -141,6 +145,7 @@ public class PantallaServicios extends JPanel {
 		botonLengua.setForeground(new Color(255, 255, 255));
 		botonLengua.setFont(new Font("Century Gothic", Font.BOLD, 15));
 		botonLengua.setBounds(216, 440, 121, 30);
+		botonLengua.addActionListener(new AcionBoton());
 		add(botonLengua);
 
 		JButton botonMatematicas = new JButton("MATES");
@@ -148,6 +153,7 @@ public class PantallaServicios extends JPanel {
 		botonMatematicas.setForeground(new Color(255, 255, 255));
 		botonMatematicas.setFont(new Font("Century Gothic", Font.BOLD, 15));
 		botonMatematicas.setBounds(216, 400, 121, 30);
+		botonMatematicas.addActionListener(new AcionBoton());
 		add(botonMatematicas);
 
 		JButton botonMusica = new JButton("MUSICA");
@@ -156,6 +162,7 @@ public class PantallaServicios extends JPanel {
 		botonMusica.setBackground(new Color(95, 158, 160));
 		botonMusica.setFont(new Font("Century Gothic", Font.BOLD, 15));
 		botonMusica.setBounds(216, 361, 121, 29);
+		botonMusica.addActionListener(new AcionBoton());
 		add(botonMusica);
 
 		JButton botonChef = new JButton("CHEF");
@@ -163,6 +170,7 @@ public class PantallaServicios extends JPanel {
 		botonChef.setForeground(new Color(255, 255, 255));
 		botonChef.setFont(new Font("Century Gothic", Font.BOLD, 15));
 		botonChef.setBounds(64, 440, 112, 30);
+		botonChef.addActionListener(new AcionBoton());
 		add(botonChef);
 
 		JButton botonManitas = new JButton("MANITAS");
@@ -170,6 +178,7 @@ public class PantallaServicios extends JPanel {
 		botonManitas.setForeground(new Color(255, 255, 255));
 		botonManitas.setBackground(new Color(95, 158, 160));
 		botonManitas.setBounds(64, 400, 112, 30);
+		botonManitas.addActionListener(new AcionBoton());
 		add(botonManitas);
 
 		JButton botonLimpieza = new JButton("LIMPIEZA");
@@ -177,6 +186,8 @@ public class PantallaServicios extends JPanel {
 		botonLimpieza.setForeground(new Color(255, 255, 255));
 		botonLimpieza.setFont(new Font("Century Gothic", Font.BOLD, 15));
 		botonLimpieza.setBounds(64, 360, 112, 30);
+		botonLimpieza.addActionListener(new AcionBoton());
+
 		add(botonLimpieza);
 
 		botonTASKER.setForeground(new Color(255, 255, 255));
@@ -272,7 +283,8 @@ public class PantallaServicios extends JPanel {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			ventana.irAPantalla("listadoservicios");
+			JButton boton = (JButton) arg0.getSource();
+			ventana.irAPantalla("listadoservicios", boton.getText());
 
 		}
 

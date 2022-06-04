@@ -6,14 +6,13 @@ import java.sql.SQLException;
 import enumeraciones.Ciudad;
 import enumeraciones.SubDeporte;
 
-public class Deporte extends Servicio{
-	
+public class Deporte extends Servicio {
+
 	public SubDeporte subDeporte;
 
-
 	public Deporte(String nombreServicio, String categoria, String subCategoria, float precioServicio,
-			String descripcion, Ciudad ciudad, SubDeporte subDeporte) throws SQLException {
-		super(nombreServicio, categoria, subCategoria, precioServicio, descripcion, ciudad);
+			String descripcion, Ciudad ciudad, SubDeporte subDeporte, String email) throws SQLException {
+		super(nombreServicio, categoria, subCategoria, precioServicio, descripcion, ciudad, email);
 		this.subDeporte = subDeporte;
 	}
 
@@ -23,6 +22,7 @@ public class Deporte extends Servicio{
 
 	/**
 	 * Devuelve el valor de subDeporte
+	 * 
 	 * @return SubDeporte devuelve el valor de subDeporte
 	 */
 	public SubDeporte getSubDeporte() {
@@ -31,12 +31,11 @@ public class Deporte extends Servicio{
 
 	/**
 	 * Método que da un nuevo valor a la variable subDeporte
+	 * 
 	 * @param subDeporte el nuevo valor de subDeporte
 	 */
 	public void setSubDeporte(SubDeporte subDeporte) {
 		this.subDeporte = subDeporte;
 	}
-	
-	
 
 }

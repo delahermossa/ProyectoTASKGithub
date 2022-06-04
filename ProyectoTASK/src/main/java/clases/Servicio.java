@@ -26,26 +26,26 @@ public class Servicio {
 	public Servicio() {
 		super();
 	}
-	
-	
-	
 
 	public Servicio(String nombreServicio, String categoria, String subCategoria, float precioServicio,
-			String descripcion, Ciudad ciudad) throws SQLException {
+			String descripcion, Ciudad ciudad, String email) throws SQLException {
 		super();
-		
-		
+
 		Statement smt = ConexionBD.conectar();
-		if (smt.executeUpdate("insert into servicios (nombreCategoria,precio,descripcion,subcategoria,nombreServicio)values('" + categoria + "','"
-				+ precioServicio + "','" + descripcion + "','" + subCategoria + "','" + nombreServicio + "')") > 0) {
-		
+		if (smt.executeUpdate(
+				"insert into servicios (nombreCategoria,precio,descripcion,subcategoria,nombreServicio)values('"
+						+ categoria + "','" + precioServicio + "','" + descripcion + "','" + subCategoria + "','"
+						+ nombreServicio + "')") > 0
+				&& smt.executeUpdate("insert into servicios_usuarios (nombreServicio,email_usuario, compra)values('"
+						+ nombreServicio + "', '" + email + "', '0')") > 0) {
+
 			this.nombreServicio = nombreServicio;
 			this.categoria = categoria;
 			this.subCategoria = subCategoria;
 			this.precioServicio = precioServicio;
 			this.descripcion = descripcion;
 			this.ciudad = ciudad;
-			
+
 		} else {
 			// Si no se ha podido insertar, lanzo un error: Algo ha ido mal.
 			ConexionBD.desconectar();
@@ -53,10 +53,6 @@ public class Servicio {
 		}
 		ConexionBD.desconectar();
 	}
-
-	
-	
-	
 
 	/**
 	 * Devuelve el valor de nombreServicio
@@ -201,9 +197,12 @@ public class Servicio {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
+
 	/**
-	 * Función que recorre la tabla usuario y servicio y realiza un select de los servicios para mostrar
-	 * en la PantallaListadoServicios los servicios recogidos por cada categoria 
+	 * Función que recorre la tabla usuario y servicio y realiza un select de los
+	 * servicios para mostrar en la PantallaListadoServicios los servicios recogidos
+	 * por cada categoria
+	 * 
 	 * @param servicio
 	 * @return
 	 * @throws SQLException
@@ -211,7 +210,9 @@ public class Servicio {
 	public static ArrayList<UsuarioServicio> consultarServicios(String servicio) throws SQLException {
 		ArrayList<UsuarioServicio> listadoServicios = new ArrayList<>();
 		Statement smt = ConexionBD.conectar();
-		ResultSet cursor = smt.executeQuery("select * from servicios where nombreCategoria='" + servicio + "'");
+		ResultSet cursor = smt.executeQuery(
+				"SELECT * FROM servicios_usuarios su JOIN servicios  s ON su.nombreServicio = s.nombreServicio JOIN usuarios u ON su.email_usuario = u.email where su.compra='0' and s.subcategoria='"
+						+ servicio + "'");
 		// Aquï¿½ podemos usar if en vez de while porque si el email estï¿½, solo va a
 		// estar
 		// una vez, porque es la PK
@@ -219,6 +220,7 @@ public class Servicio {
 			System.out.println("Servicio");
 			UsuarioServicio s = new UsuarioServicio();
 			Usuario usu = new Usuario();
+			usu.setNombreUsuario(cursor.getString("nombre"));
 			Servicio servicios = new Servicio();
 			servicios.setNombreServicio(cursor.getString("nombreServicio"));
 			servicios.setPrecioServicio(cursor.getFloat("precio"));
