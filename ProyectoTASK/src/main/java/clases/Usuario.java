@@ -68,14 +68,17 @@ public class Usuario {
 		}
 		ConexionBD.desconectar();
 	}
-	//Constructor PantallaUsuario
-	public Usuario(String nombreUsuario, String email, String direccion, float cartera, Ciudad ciudad) throws SQLException {
+
+	// Constructor PantallaUsuario
+	public Usuario(String nombreUsuario, String email, String direccion, float cartera, Ciudad ciudad)
+			throws SQLException {
 
 		Statement smt = ConexionBD.conectar();
-		ResultSet cursor = smt.executeQuery("select (email, nombre, direccion, cartera, ciudad) from usuarios where email = '" + email + "'");
+		ResultSet cursor = smt.executeQuery(
+				"select (email, nombre, direccion, cartera, ciudad) from usuarios where email = '" + email + "'");
 		this.nombreUsuario = nombreUsuario;
 		this.email = email;
-		
+
 		this.direccion = direccion;
 		this.ciudad = ciudad;
 		ConexionBD.desconectar();
@@ -121,6 +124,10 @@ public class Usuario {
 			}
 			this.email = cursor.getString("email");
 			this.nombreUsuario = cursor.getString("nombre");
+			this.carteraUsuario = cursor.getFloat("cartera");
+			this.direccion = cursor.getString("direccion");
+			this.ciudad = Ciudad.valueOf(cursor.getString("ciudad"));
+		
 
 		} else {
 			ConexionBD.desconectar();
@@ -344,6 +351,14 @@ public class Usuario {
 			return false;
 		}
 
+	}
+
+	@Override
+	public String toString() {
+		return "Usuario [nombreUsuario=" + nombreUsuario + ", carteraUsuario=" + carteraUsuario + ", email=" + email
+				+ ", contraseña=" + contraseña + ", direccion=" + direccion + ", ciudad=" + ciudad + ", esAdmin="
+				+ esAdmin + ", serviciosOfrecidos=" + serviciosOfrecidos + ", citasAgendadas=" + citasAgendadas
+				+ ", valoracionUsuarioVendedor=" + valoracionUsuarioVendedor + ", imagenPersona=" + imagenPersona + "]";
 	}
 
 }

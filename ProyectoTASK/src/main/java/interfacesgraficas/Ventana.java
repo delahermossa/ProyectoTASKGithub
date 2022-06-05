@@ -83,17 +83,15 @@ public class Ventana extends JFrame {
 		case "altaservicio":
 			this.pantallaAtual = new PantallaAltaServicio(this);
 			break;
-		case "compraservicio":
-			this.pantallaAtual = new PantallaCompraServicio(this);
-			break;
+
 		case "pantallausuario":
 			this.pantallaAtual = new PantallaUsuario(this);
 			break;
 		case "miservicio":
-			this.pantallaAtual= new PantallaMiServicio(this);
+			this.pantallaAtual = new PantallaListadoServicios(this, null, true);
 			break;
 		case "miscitas":
-			this.pantallaAtual= new PantallaMisCitas(this);
+			this.pantallaAtual = new PantallaMisCitas(this);
 			break;
 
 		}
@@ -102,13 +100,16 @@ public class Ventana extends JFrame {
 
 	}
 
-	public void irAPantalla(String nombrePantalla, String boton) {
+	public void irAPantalla(String nombrePantalla, Object object) {
 		this.pantallaAtual.setVisible(false);
 		this.pantallaAtual = null;
 
 		switch (nombrePantalla) {
 		case "listadoservicios":
-			this.pantallaAtual = new PantallaListadoServicios(this, boton);
+			this.pantallaAtual = new PantallaListadoServicios(this, object, false);
+			break;
+		case "compraservicio":
+			this.pantallaAtual = new PantallaCompraServicio(this, object);
 			break;
 
 		}

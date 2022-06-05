@@ -54,6 +54,32 @@ public class Servicio {
 		ConexionBD.desconectar();
 	}
 
+	public void comprarServicio(String mailUsuario) throws SQLException {
+		Statement smt = ConexionBD.conectar();
+		if (smt.executeUpdate("insert into servicios_usuarios (nombreServicio,email_usuario, compra)values('"
+				+ nombreServicio + "', '" + mailUsuario + "', '0')") > 0) {
+
+		} else {
+			// Si no se ha podido insertar, lanzo un error: Algo ha ido mal.
+			ConexionBD.desconectar();
+			throw new SQLException("No se ha podido insertar tu compra");
+		}
+		ConexionBD.desconectar();
+
+	}
+
+	public void borrarServicio() throws SQLException {
+		Statement smt = ConexionBD.conectar();
+		if (smt.executeUpdate("DELETE FROM servicios WHERE nombreServicio='" + nombreServicio + "'") > 0) {
+
+		} else {
+			// Si no se ha podido insertar, lanzo un error: Algo ha ido mal.
+			ConexionBD.desconectar();
+			throw new SQLException("No se ha podido insertar tu compra");
+		}
+		ConexionBD.desconectar();
+	}
+
 	/**
 	 * Devuelve el valor de nombreServicio
 	 * 
@@ -227,6 +253,11 @@ public class Servicio {
 			servicios.setDescripcion(cursor.getString("descripcion"));
 			servicios.setCategoria(cursor.getString("nombreCategoria"));
 			servicios.setSubCategoria(cursor.getString("subcategoria"));
+			usu.setCarteraUsuario(cursor.getFloat("cartera"));
+			usu.setNombreUsuario(cursor.getString("nombre"));
+			usu.setEmail(cursor.getString("email"));
+			usu.setDireccion(cursor.getString("direccion"));
+			usu.setCiudad(Ciudad.valueOf(cursor.getString("ciudad")));
 			s.setServicio(servicios);
 			s.setUsuario(usu);
 			listadoServicios.add(s);
@@ -235,6 +266,48 @@ public class Servicio {
 		ConexionBD.desconectar();
 		return listadoServicios;
 
+	}
+
+	public static ArrayList<UsuarioServicio> consultarMisServicios(String nombre) throws SQLException {
+		ArrayList<UsuarioServicio> listadoServicios = new ArrayList<>();
+		Statement smt = ConexionBD.conectar();
+		ResultSet cursor = smt.executeQuery(
+				"SELECT * FROM servicios_usuarios su JOIN servicios  s ON su.nombreServicio = s.nombreServicio JOIN usuarios u ON su.email_usuario = u.email where u.email='"
+						+ nombre + "'");
+		// Aqu� podemos usar if en vez de while porque si el email est�, solo va a
+		// estar
+		// una vez, porque es la PK
+		while (cursor.next()) {
+			System.out.println("Servicio");
+			UsuarioServicio s = new UsuarioServicio();
+			Usuario usu = new Usuario();
+			usu.setNombreUsuario(cursor.getString("nombre"));
+			Servicio servicios = new Servicio();
+			servicios.setNombreServicio(cursor.getString("nombreServicio"));
+			servicios.setPrecioServicio(cursor.getFloat("precio"));
+			servicios.setDescripcion(cursor.getString("descripcion"));
+			servicios.setCategoria(cursor.getString("nombreCategoria"));
+			servicios.setSubCategoria(cursor.getString("subcategoria"));
+			usu.setCarteraUsuario(cursor.getFloat("cartera"));
+			usu.setNombreUsuario(cursor.getString("nombre"));
+			usu.setEmail(cursor.getString("email"));
+			usu.setDireccion(cursor.getString("direccion"));
+			usu.setCiudad(Ciudad.valueOf(cursor.getString("ciudad")));
+			s.setServicio(servicios);
+			s.setUsuario(usu);
+			listadoServicios.add(s);
+
+		}
+		ConexionBD.desconectar();
+		return listadoServicios;
+
+	}
+
+	@Override
+	public String toString() {
+		return "Servicio [nombreServicio=" + nombreServicio + ", categoria=" + categoria + ", subCategoria="
+				+ subCategoria + ", precioServicio=" + precioServicio + ", descripcion=" + descripcion + ", usuario="
+				+ usuario + ", ciudad=" + ciudad + ", fotoUsuario=" + fotoUsuario + "]";
 	}
 
 }

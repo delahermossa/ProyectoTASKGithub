@@ -254,6 +254,7 @@ public class PantallaAltaServicio extends JPanel {
 				String subCategoria = seleccionTipoServicio.getSelectedItem().toString();
 
 				Ciudad ciudad = (Ciudad) seleccionCiudad.getSelectedItem();
+				
 
 				try {
 					new Servicio(campoNombreServ, categoria, subCategoria, Float.valueOf(textoPrec), campoDescrip,

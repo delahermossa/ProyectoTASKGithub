@@ -12,6 +12,8 @@ import javax.swing.SwingConstants;
 
 import utils.Utils;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class PantallaUsuario extends JPanel{
 	
@@ -23,9 +25,27 @@ public class PantallaUsuario extends JPanel{
 		setBackground(new Color(230, 230, 250));
 		setLayout(null);
 				
-				JLabel labelCartera = new JLabel(""+Utils.currentUser.getCarteraUsuario());
+				JButton botonAtras = new JButton("Atras");
+				botonAtras.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						
+						ventana.irAPantalla("servicios");
+					}
+				});
+				botonAtras.setBackground(new Color(95, 158, 160));
+				botonAtras.setForeground(new Color(255, 255, 255));
+				botonAtras.setFont(new Font("Century Gothic", Font.BOLD, 15));
+				botonAtras.setBounds(25, 551, 157, 33);
+				add(botonAtras);
+				
+				JLabel labelDinero = new JLabel(""+Utils.currentUser.getCarteraUsuario()+"€");
+				labelDinero.setFont(new Font("Century Gothic", Font.BOLD, 15));
+				labelDinero.setBounds(705, 478, 84, 28);
+				add(labelDinero);
+				
+				JLabel labelCartera = new JLabel("");
 				labelCartera.setIcon(new ImageIcon(PantallaUsuario.class.getResource("/imagenes/monedero.png")));
-				labelCartera.setBounds(662, 439, 84, 80);
+				labelCartera.setBounds(611, 439, 84, 80);
 				add(labelCartera);
 				
 				JLabel labelCiudadDinam = new JLabel(""+Utils.currentUser.getCiudad());
