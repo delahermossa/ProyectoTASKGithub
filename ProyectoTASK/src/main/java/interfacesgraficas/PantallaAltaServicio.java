@@ -236,8 +236,7 @@ public class PantallaAltaServicio extends JPanel {
 		ventana = v;
 
 		/**
-		 * ARREGLAR Lo creamos abajo para asegurarnos de que pueda coger todas las
-		 * variables
+		 * 
 		 */
 		botonRegistrarse.addMouseListener(new MouseAdapter() {
 			@Override

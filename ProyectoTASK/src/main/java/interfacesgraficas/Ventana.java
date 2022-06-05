@@ -83,11 +83,17 @@ public class Ventana extends JFrame {
 		case "altaservicio":
 			this.pantallaAtual = new PantallaAltaServicio(this);
 			break;
-		case "contratarservicio":
-			this.pantallaAtual = new PantallaContratarServicio(this);
+		case "compraservicio":
+			this.pantallaAtual = new PantallaCompraServicio(this);
 			break;
 		case "pantallausuario":
 			this.pantallaAtual = new PantallaUsuario(this);
+			break;
+		case "miservicio":
+			this.pantallaAtual= new PantallaMiServicio(this);
+			break;
+		case "miscitas":
+			this.pantallaAtual= new PantallaMisCitas(this);
 			break;
 
 		}

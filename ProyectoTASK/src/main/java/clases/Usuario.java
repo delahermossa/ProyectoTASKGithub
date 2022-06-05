@@ -68,6 +68,19 @@ public class Usuario {
 		}
 		ConexionBD.desconectar();
 	}
+	//Constructor PantallaUsuario
+	public Usuario(String nombreUsuario, String email, String direccion, float cartera, Ciudad ciudad) throws SQLException {
+
+		Statement smt = ConexionBD.conectar();
+		ResultSet cursor = smt.executeQuery("select (email, nombre, direccion, cartera, ciudad) from usuarios where email = '" + email + "'");
+		this.nombreUsuario = nombreUsuario;
+		this.email = email;
+		
+		this.direccion = direccion;
+		this.ciudad = ciudad;
+		ConexionBD.desconectar();
+
+	}
 
 	/**
 	 * Constructor usuario para pantallaLogin
@@ -76,25 +89,19 @@ public class Usuario {
 	 * @throws UsuarioNoExisteException
 	 */
 
-	/*public Usuario(String email, String contraseña) throws SQLException, UsuarioNoExisteException {
-		super();
-		Statement smt = ConexionBD.conectar();
-		ResultSet cursor = smt
-				.executeQuery("select nombre'" + nombreUsuario + "'from usuarios where email='" + email + "'");
-
-		if (cursor.next()) {
-			this.email = email;
-			this.contraseña = contraseña;
-		} else {
-			ConexionBD.desconectar();
-			throw new UsuarioNoExisteException("No existe ese email en la BD");
-		}
-
-		this.email = email;
-		this.contraseña = contraseña;
-		ConexionBD.desconectar();
-	}/*
-	/**/
+	/*
+	 * public Usuario(String email, String contraseña) throws SQLException,
+	 * UsuarioNoExisteException { super(); Statement smt = ConexionBD.conectar();
+	 * ResultSet cursor = smt .executeQuery("select nombre'" + nombreUsuario +
+	 * "'from usuarios where email='" + email + "'");
+	 * 
+	 * if (cursor.next()) { this.email = email; this.contraseña = contraseña; } else
+	 * { ConexionBD.desconectar(); throw new
+	 * UsuarioNoExisteException("No existe ese email en la BD"); }
+	 * 
+	 * this.email = email; this.contraseña = contraseña; ConexionBD.desconectar();
+	 * }/* /
+	 **/
 
 	public Usuario(String email, String contraseña) throws SQLException, ContrasegnaIncorrectaException,
 			UsuarioNoExisteException, ContrasegnaInvalidaException {
@@ -114,13 +121,14 @@ public class Usuario {
 			}
 			this.email = cursor.getString("email");
 			this.nombreUsuario = cursor.getString("nombre");
-		
+
 		} else {
 			ConexionBD.desconectar();
 			throw new UsuarioNoExisteException("No existe ese email en la BD");
 		}
 		ConexionBD.desconectar();
 	}
+
 	/**/
 
 	public Usuario() {
@@ -324,7 +332,7 @@ public class Usuario {
 	public void setCarteraUsuario(float carteraUsuario) {
 		this.carteraUsuario = carteraUsuario;
 	}
-	
+
 	public static boolean isPassValid(String contraseña) {
 		try {
 			if (contraseña.length() < 3) {

@@ -30,6 +30,17 @@ public class PantallaServicios extends JPanel {
 				ventana.irAPantalla("altaservicio");
 			}
 		});
+		
+		JLabel iconoUsuario = new JLabel("");
+		iconoUsuario.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ventana.irAPantalla("pantallausuario");
+			}
+		});
+		iconoUsuario.setIcon(new ImageIcon(PantallaServicios.class.getResource("/imagenes/user.png")));
+		iconoUsuario.setBounds(762, 10, 66, 53);
+		add(iconoUsuario);
 
 		JLabel labelTituloMascota = new JLabel("MASCOTA");
 		labelTituloMascota.setForeground(new Color(0, 0, 139));
