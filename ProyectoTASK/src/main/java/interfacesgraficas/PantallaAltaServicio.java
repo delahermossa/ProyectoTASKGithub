@@ -8,12 +8,15 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.IOException;
 import java.sql.SQLException;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -84,6 +87,20 @@ public class PantallaAltaServicio extends JPanel {
 		add(labelPrecio);
 
 		JLabel subeFoto = new JLabel("");
+		subeFoto.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				JFileChooser elige= new JFileChooser();
+		        elige.showOpenDialog(elige);
+		        File file=elige.getSelectedFile();
+		        try {
+					System.out.println(file.getCanonicalPath());
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		subeFoto.setIcon(new ImageIcon(PantallaAltaServicio.class.getResource("/imagenes/iconoSubirFoto.png")));
 		subeFoto.setBounds(523, 445, 95, 86);
 		add(subeFoto);
