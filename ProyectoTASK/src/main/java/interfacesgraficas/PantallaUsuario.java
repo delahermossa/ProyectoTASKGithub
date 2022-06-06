@@ -32,6 +32,11 @@ public class PantallaUsuario extends JPanel{
 						ventana.irAPantalla("servicios");
 					}
 				});
+				
+				JLabel labelPersona = new JLabel("");
+				labelPersona.setIcon(new ImageIcon(PantallaUsuario.class.getResource("/imagenes/usuario.png")));
+				labelPersona.setBounds(416, 27, 412, 425);
+				add(labelPersona);
 				botonAtras.setBackground(new Color(95, 158, 160));
 				botonAtras.setForeground(new Color(255, 255, 255));
 				botonAtras.setFont(new Font("Century Gothic", Font.BOLD, 15));
@@ -39,27 +44,31 @@ public class PantallaUsuario extends JPanel{
 				add(botonAtras);
 				
 				JLabel labelDinero = new JLabel(""+Utils.currentUser.getCarteraUsuario()+"€");
-				labelDinero.setFont(new Font("Century Gothic", Font.BOLD, 15));
-				labelDinero.setBounds(705, 478, 84, 28);
+				labelDinero.setFont(new Font("Century Gothic", Font.BOLD, 25));
+				labelDinero.setBounds(636, 517, 84, 28);
 				add(labelDinero);
 				
 				JLabel labelCartera = new JLabel("");
-				labelCartera.setIcon(new ImageIcon(PantallaUsuario.class.getResource("/imagenes/monedero.png")));
-				labelCartera.setBounds(611, 439, 84, 80);
+				labelCartera.setIcon(new ImageIcon(PantallaUsuario.class.getResource("/imagenes/monedero (2).png")));
+				labelCartera.setBounds(515, 488, 101, 75);
 				add(labelCartera);
 				
 				JLabel labelCiudadDinam = new JLabel(""+Utils.currentUser.getCiudad());
 				labelCiudadDinam.setFont(new Font("Century Gothic", Font.BOLD, 15));
-				labelCiudadDinam.setBounds(142, 429, 216, 28);
+				labelCiudadDinam.setBounds(152, 429, 216, 28);
 				add(labelCiudadDinam);
 				
 				JLabel iconoUsu = new JLabel("");
 				iconoUsu.setIcon(new ImageIcon(PantallaUsuario.class.getResource("/imagenes/user.png")));
 				iconoUsu.setHorizontalAlignment(SwingConstants.CENTER);
-				iconoUsu.setBounds(726, 68, 62, 61);
+				iconoUsu.setBounds(761, 27, 62, 61);
 				add(iconoUsu);
 				
 				JButton botonMiServ = new JButton("MI SERVICIO");
+				botonMiServ.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+					}
+				});
 				botonMiServ.addMouseListener(new MouseAdapter() {
 					@Override
 					public void mouseClicked(MouseEvent e) {
@@ -70,7 +79,7 @@ public class PantallaUsuario extends JPanel{
 				botonMiServ.setForeground(Color.WHITE);
 				botonMiServ.setFont(new Font("Century Gothic", Font.BOLD, 20));
 				botonMiServ.setBackground(new Color(32, 178, 170));
-				botonMiServ.setBounds(611, 373, 177, 44);
+				botonMiServ.setBounds(624, 419, 177, 44);
 				add(botonMiServ);
 				
 				JButton botonMisCitas = new JButton("MIS CITAS");
@@ -84,12 +93,12 @@ public class PantallaUsuario extends JPanel{
 				botonMisCitas.setForeground(Color.WHITE);
 				botonMisCitas.setFont(new Font("Century Gothic", Font.BOLD, 20));
 				botonMisCitas.setBackground(new Color(32, 178, 170));
-				botonMisCitas.setBounds(611, 319, 177, 44);
+				botonMisCitas.setBounds(431, 419, 177, 44);
 				add(botonMisCitas);
 				
 				JLabel labelCiudad = new JLabel("Ciudad");
 				labelCiudad.setHorizontalAlignment(SwingConstants.LEFT);
-				labelCiudad.setForeground(new Color(95, 158, 160));
+				labelCiudad.setForeground(new Color(255, 255, 255));
 				labelCiudad.setFont(new Font("Century Gothic", Font.BOLD, 20));
 				labelCiudad.setBounds(31, 427, 101, 28);
 				add(labelCiudad);
@@ -101,7 +110,7 @@ public class PantallaUsuario extends JPanel{
 				
 				JLabel labelDireccion = new JLabel("Direccion");
 				labelDireccion.setHorizontalAlignment(SwingConstants.LEFT);
-				labelDireccion.setForeground(new Color(95, 158, 160));
+				labelDireccion.setForeground(new Color(255, 255, 255));
 				labelDireccion.setFont(new Font("Century Gothic", Font.BOLD, 20));
 				labelDireccion.setBounds(31, 389, 101, 28);
 				add(labelDireccion);
@@ -117,14 +126,14 @@ public class PantallaUsuario extends JPanel{
 				add(labelUsuarioDinamic);
 		
 		JLabel labelEmail = new JLabel("Email");
-		labelEmail.setForeground(new Color(95, 158, 160));
+		labelEmail.setForeground(new Color(255, 255, 255));
 		labelEmail.setFont(new Font("Century Gothic", Font.BOLD, 20));
 		labelEmail.setBounds(31, 352, 84, 27);
 		labelEmail.setBackground(Color.WHITE);
 		add(labelEmail);
 		
 		JLabel labelUsuario = new JLabel("Usuario");
-		labelUsuario.setForeground(new Color(95, 158, 160));
+		labelUsuario.setForeground(new Color(255, 255, 255));
 		labelUsuario.setFont(new Font("Century Gothic", Font.BOLD, 20));
 		labelUsuario.setBounds(31, 315, 166, 28);
 		add(labelUsuario);
@@ -135,9 +144,14 @@ public class PantallaUsuario extends JPanel{
 		labelIcono.setBounds(31, 27, 111, 100);
 		add(labelIcono);
 		
+		JLabel labelderecha = new JLabel("");
+		labelderecha.setIcon(new ImageIcon(PantallaUsuario.class.getResource("/imagenes/fondoblanco.jpg")));
+		labelderecha.setBounds(418, 0, 432, 650);
+		add(labelderecha);
+		
 		JLabel labelFondo = new JLabel("");
-		labelFondo.setIcon(new ImageIcon(PantallaUsuario.class.getResource("/imagenes/fondoServicios.jpg")));
-		labelFondo.setBounds(0, 0, 850, 640);
+		labelFondo.setIcon(new ImageIcon(PantallaUsuario.class.getResource("/imagenes/lateral.png")));
+		labelFondo.setBounds(0, 0, 850, 650);
 		add(labelFondo);
 		addMouseListener(new MouseAdapter() {
 			@Override

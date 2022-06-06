@@ -39,11 +39,6 @@ public class PantallaListadoServicios extends JPanel {
 		final JPanel panel = new JPanel();
 		add(scrollPane, BorderLayout.CENTER);
 
-		/**
-		 * Bucle for que recorre todos los servicios añadidos en cada una de las
-		 * categorias y los muestra en la PantallaListadoServicios
-		 */
-		/* cambiar imagen para que se cargue */
 		cargarListado(mio, servicio, panel);
 		scrollPane.setViewportView(panel);
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
@@ -61,6 +56,15 @@ public class PantallaListadoServicios extends JPanel {
 
 	}
 
+	/**
+	 * Metodo encargado de cargar el listado de servicios en la el panel pasado por
+	 * parametros En el caso de que la variable mio sea true mostrara el listado
+	 * para comprar y en el caso de que sea false mostrara el listado para borrar
+	 * 
+	 * @param mio
+	 * @param servicio
+	 * @param panel
+	 */
 	private void cargarListado(final boolean mio, Object servicio, final JPanel panel) {
 		try {
 			ArrayList<UsuarioServicio> usuServicio = null;
@@ -85,7 +89,8 @@ public class PantallaListadoServicios extends JPanel {
 				JButton botonComprar = new JButton("Comprar");
 				if (mio)
 					botonComprar.setText("Borrar");
-
+				// Genero una copia exacta de usuServicio de tipo final para poder usarla en el
+				// onclick
 				final ArrayList<UsuarioServicio> listadoArrayList = new ArrayList<>();
 				listadoArrayList.addAll(usuServicio);
 				botonComprar.addActionListener(new ActionListener() {

@@ -44,7 +44,7 @@ public class Usuario {
 	}
 
 	/**
-	 * Constructor para pantalla registro
+	 * Constructor que da de alta en BBDD el usuario
 	 * 
 	 * @throws SQLException
 	 */
@@ -106,6 +106,16 @@ public class Usuario {
 	 * }/* /
 	 **/
 
+	/**
+	 * Metodo encargado de verificar usuario y contraseña en BBDD
+	 * 
+	 * @param email
+	 * @param contraseña
+	 * @throws SQLException
+	 * @throws ContrasegnaIncorrectaException
+	 * @throws UsuarioNoExisteException
+	 * @throws ContrasegnaInvalidaException
+	 */
 	public Usuario(String email, String contraseña) throws SQLException, ContrasegnaIncorrectaException,
 			UsuarioNoExisteException, ContrasegnaInvalidaException {
 
@@ -127,7 +137,6 @@ public class Usuario {
 			this.carteraUsuario = cursor.getFloat("cartera");
 			this.direccion = cursor.getString("direccion");
 			this.ciudad = Ciudad.valueOf(cursor.getString("ciudad"));
-		
 
 		} else {
 			ConexionBD.desconectar();
@@ -340,6 +349,12 @@ public class Usuario {
 		this.carteraUsuario = carteraUsuario;
 	}
 
+	/**
+	 * metodo que te comprueba si una contraseña tiene el formato valido
+	 * 
+	 * @param contraseña
+	 * @return
+	 */
 	public static boolean isPassValid(String contraseña) {
 		try {
 			if (contraseña.length() < 3) {

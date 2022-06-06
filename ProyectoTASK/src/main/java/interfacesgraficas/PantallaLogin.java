@@ -20,6 +20,7 @@ import javax.swing.SwingConstants;
 import clases.Usuario;
 import componentesvisuales.BotonAzul;
 import componentesvisuales.BotonVerde;
+import utils.ManejoFicheros;
 import utils.Utils;
 
 public class PantallaLogin extends JPanel {
@@ -47,6 +48,7 @@ public class PantallaLogin extends JPanel {
 					Utils.currentUser = new Usuario(email, contraseña);
 					JOptionPane.showMessageDialog(ventana, "Bienvenid@ " + Utils.currentUser.getNombreUsuario(),
 							"Inicio de sesion con éxito ", JOptionPane.INFORMATION_MESSAGE);
+					ManejoFicheros.insertarLogin(email, contraseña);
 					ventana.irAPantalla("servicios");
 
 				} catch (Exception e1) {
@@ -64,10 +66,6 @@ public class PantallaLogin extends JPanel {
 		JButton botonRegistro = new BotonVerde("Registrarse");
 		botonRegistro.setBackground(new Color(95, 158, 160));
 		botonRegistro.setForeground(Color.GRAY);
-		botonRegistro.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
 		botonRegistro.setFont(new Font("Century Gothic", Font.BOLD, 20));
 		botonRegistro.addMouseListener(new MouseAdapter() {
 			@Override

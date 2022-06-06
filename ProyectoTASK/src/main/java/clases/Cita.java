@@ -23,6 +23,13 @@ public class Cita {
 		this.servicio = servicio;
 	}
 
+	/**
+	 * Metodo encargado de crear una cita en BBDD
+	 * 
+	 * @param usuServicio
+	 * @param fechaCita
+	 * @throws SQLException
+	 */
 	public static void crearCita(UsuarioServicio usuServicio, String fechaCita) throws SQLException {
 
 		Statement smt = ConexionBD.conectar();
@@ -38,6 +45,13 @@ public class Cita {
 		ConexionBD.desconectar();
 
 	}
+
+	/**
+	 * Metodo encargado de consultar las citas del usuario logeado
+	 * 
+	 * @return la lista de citas del usuario logeado
+	 * @throws SQLException
+	 */
 
 	public static ArrayList<Cita> consultarCitas() throws SQLException {
 		ArrayList<Cita> listadoServicios = new ArrayList<>();

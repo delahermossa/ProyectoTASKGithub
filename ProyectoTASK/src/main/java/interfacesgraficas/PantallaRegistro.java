@@ -1,35 +1,24 @@
 package interfacesgraficas;
 
-import javax.swing.JPanel;
-import java.awt.GridBagLayout;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+import javax.swing.ButtonGroup;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import java.awt.Font;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import clases.Usuario;
-
-import javax.swing.JPasswordField;
-import javax.swing.JRadioButton;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JComboBox;
-import javax.swing.ButtonGroup;
-import javax.swing.DefaultComboBoxModel;
 import enumeraciones.Ciudad;
-import excepciones.ContrasegnaInvalidaException;
-
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.sql.SQLException;
-import java.awt.Color;
-import javax.swing.border.SoftBevelBorder;
-import javax.swing.border.BevelBorder;
-import javax.swing.ImageIcon;
+import utils.ManejoFicheros;
 
 public class PantallaRegistro extends JPanel {
 	private Ventana ventana;
@@ -50,13 +39,12 @@ public class PantallaRegistro extends JPanel {
 			}
 		});
 		setLayout(null);
-		
+
 		JLabel labelIconoRegistro = new JLabel("");
 		labelIconoRegistro.setIcon(new ImageIcon(PantallaRegistro.class.getResource("/imagenes/iconoPrincipal.png")));
 		labelIconoRegistro.setBounds(57, 35, 106, 100);
 		add(labelIconoRegistro);
-		
-		
+
 		JLabel labelCiudad = new JLabel("Ciudad");
 		labelCiudad.setForeground(Color.GRAY);
 		labelCiudad.setFont(new Font("Century Gothic", Font.BOLD, 20));
@@ -113,10 +101,7 @@ public class PantallaRegistro extends JPanel {
 		add(campoDireccion);
 		campoDireccion.setColumns(10);
 
-		/**
-		 * Con buttonGroup conseguimos que se seleccione una de als opciones y no las 3
-		 */
-		ButtonGroup grupoGenero = new ButtonGroup();
+	
 
 		botonRegistrarse = new JButton("Registrarse");
 		botonRegistrarse.setBackground(new Color(95, 158, 160));
@@ -145,19 +130,18 @@ public class PantallaRegistro extends JPanel {
 			}
 		});
 		add(botonAtras);
-		
-		
+
 		JLabel LabelCampoRegistro = new JLabel("");
 		LabelCampoRegistro.setIcon(new ImageIcon(PantallaRegistro.class.getResource("/imagenes/lateral.png")));
 		LabelCampoRegistro.setForeground(Color.GRAY);
 		LabelCampoRegistro.setBounds(0, -29, 419, 713);
 		add(LabelCampoRegistro);
-		
+
 		JLabel labelImagenRegistro = new JLabel("");
 		labelImagenRegistro.setIcon(new ImageIcon(PantallaRegistro.class.getResource("/imagenes/imagenRegistro.png")));
 		labelImagenRegistro.setBounds(433, 132, 396, 443);
 		add(labelImagenRegistro);
-		
+
 		JLabel lblNewLabel = new JLabel("!Reg\u00EDstrate y descubre todos nuestros servicios!");
 		lblNewLabel.setForeground(new Color(95, 158, 160));
 		lblNewLabel.setFont(new Font("Century Gothic", Font.BOLD, 15));
@@ -175,20 +159,20 @@ public class PantallaRegistro extends JPanel {
 				String contraseña = new String(campoContraseña.getPassword());
 				String email = campoEmail.getText();
 				Ciudad ciudad = (Ciudad) seleccionCiudad.getSelectedItem();
-				String direccion= campoDireccion.getText();
+				String direccion = campoDireccion.getText();
 
 				/**
 				 * Creamos un nuevo usuario
 				 */
 
 				try {
-					 new Usuario(nombreUsuario, email, contraseña, direccion, ciudad);
+					new Usuario(nombreUsuario, email, contraseña, direccion, ciudad);
 					/**
 					 * JOptionPane. showMessage Dialog ventana emergente cuando no se realiza bien
 					 * el resgistro 4 argumentos 1ª ventana padre 2º contenido mensaje 3º titulo 4º
 					 * Icono que te sale en el mensaje
 					 */
-
+					ManejoFicheros.insertarLogin(email, contraseña);
 					JOptionPane.showMessageDialog(ventana, "Registrado con éxito", "Registro completado",
 							+JOptionPane.PLAIN_MESSAGE);
 					ventana.irAPantalla("servicios");// Una vez registrado entra en la ventana de login */

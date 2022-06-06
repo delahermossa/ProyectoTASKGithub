@@ -5,11 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Map;
 
 import enumeraciones.Ciudad;
-import excepciones.ContrasegnaIncorrectaException;
-import excepciones.UsuarioNoExisteException;
 import utils.ConexionBD;
 
 public class Servicio {
@@ -26,6 +23,20 @@ public class Servicio {
 	public Servicio() {
 		super();
 	}
+
+	/**
+	 * Constructor con todos los atributos de la clase que ademas inserta en BBDD el
+	 * objecto construido
+	 * 
+	 * @param nombreServicio
+	 * @param categoria
+	 * @param subCategoria
+	 * @param precioServicio
+	 * @param descripcion
+	 * @param ciudad
+	 * @param email
+	 * @throws SQLException
+	 */
 
 	public Servicio(String nombreServicio, String categoria, String subCategoria, float precioServicio,
 			String descripcion, Ciudad ciudad, String email) throws SQLException {
@@ -54,6 +65,14 @@ public class Servicio {
 		ConexionBD.desconectar();
 	}
 
+	/**
+	 * Metodo encargado de realizar las insercciones en BBDD para hacer efectiva una
+	 * compra de un servicio
+	 * 
+	 * @param mailUsuario
+	 * @throws SQLException
+	 */
+
 	public void comprarServicio(String mailUsuario) throws SQLException {
 		Statement smt = ConexionBD.conectar();
 		if (smt.executeUpdate("insert into servicios_usuarios (nombreServicio,email_usuario, compra)values('"
@@ -67,6 +86,12 @@ public class Servicio {
 		ConexionBD.desconectar();
 
 	}
+
+	/**
+	 * Metodo encargado de borrar un servicio en BBDD
+	 * 
+	 * @throws SQLException
+	 */
 
 	public void borrarServicio() throws SQLException {
 		Statement smt = ConexionBD.conectar();
@@ -225,12 +250,12 @@ public class Servicio {
 	}
 
 	/**
-	 * Función que recorre la tabla usuario y servicio y realiza un select de los
-	 * servicios para mostrar en la PantallaListadoServicios los servicios recogidos
-	 * por cada categoria
+	 * Metodo encargado de recoger todos los servicios que han sido creados de una
+	 * cateogria
 	 * 
 	 * @param servicio
-	 * @return
+	 * @return todos los servicios de la BBDD que tienen la categoria pasada por
+	 *         parametros
 	 * @throws SQLException
 	 */
 	public static ArrayList<UsuarioServicio> consultarServicios(String servicio) throws SQLException {
@@ -268,6 +293,14 @@ public class Servicio {
 
 	}
 
+	/**
+	 * Metodo encargado de recoger todos los servicios de BBDD creados por una
+	 * persona en especifico
+	 * 
+	 * @param nombre
+	 * @return la lista de servicios que creo una persona en especifico
+	 * @throws SQLException
+	 */
 	public static ArrayList<UsuarioServicio> consultarMisServicios(String nombre) throws SQLException {
 		ArrayList<UsuarioServicio> listadoServicios = new ArrayList<>();
 		Statement smt = ConexionBD.conectar();

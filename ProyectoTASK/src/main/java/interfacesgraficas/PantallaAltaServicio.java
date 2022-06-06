@@ -2,8 +2,6 @@ package interfacesgraficas;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
@@ -46,10 +44,12 @@ public class PantallaAltaServicio extends JPanel {
 		setLayout(null);
 
 		JLabel labelEmailDinamico = new JLabel("" + Utils.currentUser.getEmail());
+		labelEmailDinamico.setFont(new Font("Century Gothic", Font.BOLD, 15));
 		labelEmailDinamico.setBounds(25, 232, 153, 28);
 		add(labelEmailDinamico);
 
 		JLabel labelNombreUsuario = new JLabel("" + Utils.currentUser.getNombreUsuario());
+		labelNombreUsuario.setFont(new Font("Century Gothic", Font.BOLD, 15));
 		labelNombreUsuario.setBounds(25, 177, 153, 28);
 		add(labelNombreUsuario);
 

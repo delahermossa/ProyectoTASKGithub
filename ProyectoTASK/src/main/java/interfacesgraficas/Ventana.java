@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import clases.Usuario;
+import utils.ManejoFicheros;
 import utils.Utils;
 
 public class Ventana extends JFrame {
@@ -29,30 +30,23 @@ public class Ventana extends JFrame {
 
 		this.setSize(850, 650);
 		this.setLocationRelativeTo(null);
-
-		// Pantalla completa las dos lineas siguentes
-		// this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		// this.setUndecorated(true);
-
 		this.setTitle("TASK");
 		this.setIconImage(new ImageIcon("./iconos/iconoPrincipal.png").getImage());
 		this.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setResizable(false);
-		if (args.length > 0) {
+		
+		/**
+		 * Argumentos de programa y Manejo de ficheros que lea y guarde el login
+		 */
+		if (args.length > 0) {//args
 			String email = args[0];
 			String contraseña = args[1];
-			try {
-				Utils.currentUser = new Usuario(email, contraseña);
+			login(email, contraseña);
+		} else if (ManejoFicheros.leerLogin() != null) {
+			Usuario s = ManejoFicheros.leerLogin();//ficheros- cache
+			login(s.getEmail(), s.getContraseña());
 
-				JOptionPane.showMessageDialog(this, "Bienvenid@ " + Utils.currentUser.getNombreUsuario(),
-						"Inicio de sesion con éxito ", JOptionPane.INFORMATION_MESSAGE);
-				this.pantallaAtual = new PantallaServicios(this);
-
-			} catch (Exception e1) {
-				JOptionPane.showMessageDialog(this, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-				this.pantallaAtual = new PantallaLogin(this);
-			}
 		} else {
 			this.pantallaAtual = new PantallaLogin(this);
 		}
@@ -66,6 +60,26 @@ public class Ventana extends JFrame {
 	 * 
 	 * @param nombrePantalla
 	 */
+	
+	private void login(String email, String contraseña) {
+		try {
+			Utils.currentUser = new Usuario(email, contraseña);
+
+			JOptionPane.showMessageDialog(this, "Bienvenid@ " + Utils.currentUser.getNombreUsuario(),
+					"Inicio de sesion con éxito ", JOptionPane.INFORMATION_MESSAGE);
+			this.pantallaAtual = new PantallaServicios(this);
+
+		} catch (Exception e1) {
+			JOptionPane.showMessageDialog(this, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+			this.pantallaAtual = new PantallaLogin(this);
+		}
+	}
+	
+	/**
+	 * Metodo que uso para cambiar de pantalla
+	 * @param nombrePantalla
+	 */
+
 	public void irAPantalla(String nombrePantalla) {
 		this.pantallaAtual.setVisible(false);
 		this.pantallaAtual = null;
@@ -99,7 +113,12 @@ public class Ventana extends JFrame {
 		this.setContentPane(pantallaAtual);
 
 	}
-
+	/**
+	 * En caso de pasar algo a la pantalla, como no se lo que le voy a pasar le pasamos object por argumentos
+	 * En este caso le paso todo el servicio, con sus datos
+	 * @param nombrePantalla
+	 * @param object
+	 */
 	public void irAPantalla(String nombrePantalla, Object object) {
 		this.pantallaAtual.setVisible(false);
 		this.pantallaAtual = null;
