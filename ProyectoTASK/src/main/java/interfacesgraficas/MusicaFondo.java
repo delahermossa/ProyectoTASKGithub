@@ -42,11 +42,7 @@ public class MusicaFondo extends Thread{
 		super();
 		this.musica = musica;
 	}
-	
-	/*MusicaFondo musica= new MusicaFondo(new File("./musica/Justin Bieber.wav"));
-		musica.start();
-	 * 
-	 * */
+
 }
 
 

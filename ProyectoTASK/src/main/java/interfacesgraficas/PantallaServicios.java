@@ -290,11 +290,8 @@ public class PantallaServicios extends JPanel {
 		labelAlta2.setBounds(24, 539, 391, 26);
 		add(labelAlta2);
 		
-		/**
-		 * Musica
-		 */
-		MusicaFondo musica= new MusicaFondo(new File("./musica/Justin Bieber.wav"));
-		musica.start();
+
+	
 
 		JLabel labelFondoServicio = new JLabel("");
 		labelFondoServicio.setBackground(new Color(240, 240, 240));

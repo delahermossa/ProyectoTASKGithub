@@ -24,6 +24,10 @@ import utils.ManejoFicheros;
 import utils.Utils;
 
 public class PantallaLogin extends JPanel {
+	
+	/**
+	 * 
+	 */
 	private Ventana ventana;
 	private JTextField campoUsuario;
 	private JPasswordField campoContraseña;

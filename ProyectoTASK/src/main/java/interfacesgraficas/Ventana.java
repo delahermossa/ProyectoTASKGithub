@@ -2,6 +2,7 @@ package interfacesgraficas;
 
 import java.awt.Cursor;
 import java.awt.Image;
+import java.io.File;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -35,6 +36,9 @@ public class Ventana extends JFrame {
 		this.setCursor(new Cursor(Cursor.CROSSHAIR_CURSOR));
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setResizable(false);
+		
+		MusicaFondo musica= new MusicaFondo(new File("./musica/musica.wav"));
+		musica.start();
 		
 		/**
 		 * Argumentos de programa y Manejo de ficheros que lea y guarde el login
