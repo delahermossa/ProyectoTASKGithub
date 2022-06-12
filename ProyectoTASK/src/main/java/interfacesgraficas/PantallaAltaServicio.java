@@ -274,8 +274,10 @@ public class PantallaAltaServicio extends JPanel {
 				
 
 				try {
+					System.out.println(campoNombreServ+categoria+subCategoria+ campoDescrip);///
 					new Servicio(campoNombreServ, categoria, subCategoria, Float.valueOf(textoPrec), campoDescrip,
 							ciudad, Utils.currentUser.getEmail());
+					
 				} catch (NumberFormatException e2) {
 					// TODO Auto-generated catch block
 					e2.printStackTrace();

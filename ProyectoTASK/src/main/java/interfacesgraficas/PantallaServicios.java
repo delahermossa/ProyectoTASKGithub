@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -288,6 +289,12 @@ public class PantallaServicios extends JPanel {
 		labelAlta2.setFont(new Font("Century Gothic", Font.BOLD, 15));
 		labelAlta2.setBounds(24, 539, 391, 26);
 		add(labelAlta2);
+		
+		/**
+		 * Musica
+		 */
+		MusicaFondo musica= new MusicaFondo(new File("./musica/Justin Bieber.wav"));
+		musica.start();
 
 		JLabel labelFondoServicio = new JLabel("");
 		labelFondoServicio.setBackground(new Color(240, 240, 240));

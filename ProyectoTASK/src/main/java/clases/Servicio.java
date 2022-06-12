@@ -251,7 +251,7 @@ public class Servicio {
 
 	/**
 	 * Metodo encargado de recoger todos los servicios que han sido creados de una
-	 * cateogria
+	 * categoria
 	 * 
 	 * @param servicio
 	 * @return todos los servicios de la BBDD que tienen la categoria pasada por

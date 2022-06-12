@@ -104,6 +104,7 @@ public class PantallaListadoServicios extends JPanel {
 								usuarioServicios.getServicio().borrarServicio();
 								panel.removeAll();
 								cargarListado(mio, listadoArrayList, panel);
+								
 							} catch (SQLException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();

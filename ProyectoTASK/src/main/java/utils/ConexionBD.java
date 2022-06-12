@@ -6,12 +6,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public abstract class ConexionBD {
-	// He cambiado la base de datos para que me funcione a mi ya que tengo una
-	// contraseña diferente y nombres diferentes
+
 	private final static String cadenaConexion = "jdbc:mysql://localhost:3306/proyectotask";
 	private final static String usuarioBD = "root";
 	private final static String passwordBD = "admin";
-	private static Connection conexion; // singleton
+	private static Connection conexion;
 
 	public static Statement conectar() {
 		try {
@@ -20,7 +19,7 @@ public abstract class ConexionBD {
 			}
 			return conexion.createStatement();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 			return null;
 		}
@@ -32,7 +31,7 @@ public abstract class ConexionBD {
 				conexion.close();
 				conexion = null;
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
+			
 				e.printStackTrace();
 			}
 		}

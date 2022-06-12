@@ -85,26 +85,7 @@ public class Usuario {
 
 	}
 
-	/**
-	 * Constructor usuario para pantallaLogin
-	 * 
-	 * @throws SQLException
-	 * @throws UsuarioNoExisteException
-	 */
 
-	/*
-	 * public Usuario(String email, String contraseña) throws SQLException,
-	 * UsuarioNoExisteException { super(); Statement smt = ConexionBD.conectar();
-	 * ResultSet cursor = smt .executeQuery("select nombre'" + nombreUsuario +
-	 * "'from usuarios where email='" + email + "'");
-	 * 
-	 * if (cursor.next()) { this.email = email; this.contraseña = contraseña; } else
-	 * { ConexionBD.desconectar(); throw new
-	 * UsuarioNoExisteException("No existe ese email en la BD"); }
-	 * 
-	 * this.email = email; this.contraseña = contraseña; ConexionBD.desconectar();
-	 * }/* /
-	 **/
 
 	/**
 	 * Metodo encargado de verificar usuario y contraseña en BBDD
