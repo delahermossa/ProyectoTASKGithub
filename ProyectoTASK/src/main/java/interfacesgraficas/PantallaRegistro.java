@@ -19,6 +19,11 @@ import javax.swing.JTextField;
 import clases.Usuario;
 import enumeraciones.Ciudad;
 import utils.ManejoFicheros;
+/**
+ * Pantalla creada para registrar el usuario
+ * @author delah
+ *
+ */
 
 public class PantallaRegistro extends JPanel {
 	private Ventana ventana;
