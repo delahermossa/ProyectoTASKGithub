@@ -258,10 +258,7 @@ public class PantallaAltaServicio extends JPanel {
 		botonRegistrarse.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				/*
-				 * String nombreServicio, String categoria, String subCategoria, float
-				 * precioServicio, String descripcion, Ciudad ciudad
-				 */
+			
 
 				String campoDescrip = campoDescripcion.getText();
 				String textoPrec = textoPrecio.getText();
@@ -286,12 +283,9 @@ public class PantallaAltaServicio extends JPanel {
 					e2.printStackTrace();
 				}
 
-				/**
-				 * Creamos un nuevo usuario
-				 */
-
+			
 				try {
-					// new Usuario(nombreUsuario,email,contraseña,true);
+					
 					/**
 					 * JOptionPane. showMessage Dialog ventana emergente cuando no se realiza bien
 					 * el resgistro 4 argumentos 1ª ventana padre 2º contenido mensaje 3º titulo 4º

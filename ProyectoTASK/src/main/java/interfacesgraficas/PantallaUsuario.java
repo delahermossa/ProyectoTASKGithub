@@ -33,6 +33,24 @@ public class PantallaUsuario extends JPanel{
 					}
 				});
 				
+				JButton botonCerrarsesion = new JButton("Cerrar sesi\u00F3n");
+				botonCerrarsesion.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+						ventana.irAPantalla("login");
+					}
+				});
+				botonCerrarsesion.setForeground(Color.WHITE);
+				botonCerrarsesion.setFont(new Font("Century Gothic", Font.BOLD, 15));
+				botonCerrarsesion.setBackground(new Color(95, 158, 160));
+				botonCerrarsesion.setBounds(545, 551, 157, 33);
+				add(botonCerrarsesion);
+				
+				JLabel labelPerfil = new JLabel("Mi perfil");
+				labelPerfil.setForeground(new Color(218, 165, 32));
+				labelPerfil.setFont(new Font("Century Gothic", Font.BOLD, 15));
+				labelPerfil.setBounds(762, 0, 66, 36);
+				add(labelPerfil);
+				
 				JLabel labelPersona = new JLabel("");
 				labelPersona.setIcon(new ImageIcon(PantallaUsuario.class.getResource("/imagenes/usuario.png")));
 				labelPersona.setBounds(416, 27, 412, 425);
@@ -42,16 +60,6 @@ public class PantallaUsuario extends JPanel{
 				botonAtras.setFont(new Font("Century Gothic", Font.BOLD, 15));
 				botonAtras.setBounds(25, 551, 157, 33);
 				add(botonAtras);
-				
-				JLabel labelDinero = new JLabel(""+Utils.currentUser.getCarteraUsuario()+"€");
-				labelDinero.setFont(new Font("Century Gothic", Font.BOLD, 25));
-				labelDinero.setBounds(636, 517, 84, 28);
-				add(labelDinero);
-				
-				JLabel labelCartera = new JLabel("");
-				labelCartera.setIcon(new ImageIcon(PantallaUsuario.class.getResource("/imagenes/monedero (2).png")));
-				labelCartera.setBounds(515, 488, 101, 75);
-				add(labelCartera);
 				
 				JLabel labelCiudadDinam = new JLabel(""+Utils.currentUser.getCiudad());
 				labelCiudadDinam.setFont(new Font("Century Gothic", Font.BOLD, 15));
@@ -83,6 +91,10 @@ public class PantallaUsuario extends JPanel{
 				add(botonMiServ);
 				
 				JButton botonMisCitas = new JButton("MIS CITAS");
+				botonMisCitas.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+					}
+				});
 				botonMisCitas.addMouseListener(new MouseAdapter() {
 					@Override
 					public void mouseClicked(MouseEvent e) {

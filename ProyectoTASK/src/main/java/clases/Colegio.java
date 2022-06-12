@@ -5,6 +5,11 @@ import java.sql.SQLException;
 
 import enumeraciones.Ciudad;
 import enumeraciones.SubColegio;
+/**
+ * Clase que hereda de la clase servicio 
+ * @author delah
+ *
+ */
 
 public class Colegio extends Servicio {
 	

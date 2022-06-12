@@ -39,8 +39,14 @@ public class PantallaServicios extends JPanel {
 				ventana.irAPantalla("pantallausuario");
 			}
 		});
+		
+		JLabel labelPerfil = new JLabel("Mi perfil");
+		labelPerfil.setForeground(new Color(218, 165, 32));
+		labelPerfil.setFont(new Font("Century Gothic", Font.BOLD, 15));
+		labelPerfil.setBounds(761, 0, 66, 36);
+		add(labelPerfil);
 		iconoUsuario.setIcon(new ImageIcon(PantallaServicios.class.getResource("/imagenes/user.png")));
-		iconoUsuario.setBounds(762, 10, 66, 53);
+		iconoUsuario.setBounds(771, 31, 66, 53);
 		add(iconoUsuario);
 
 		JLabel labelTituloMascota = new JLabel("MASCOTA");

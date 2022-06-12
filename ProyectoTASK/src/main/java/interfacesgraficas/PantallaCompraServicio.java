@@ -171,7 +171,7 @@ public class PantallaCompraServicio extends JPanel {
 					Cita.crearCita(usuarioServicio,
 							comboDia.getSelectedItem().toString() + " " + comboHora.getSelectedItem().toString());
 
-					ventana.irAPantalla("miscitas");
+					ventana.irAPantalla("servicios");
 				} catch (SQLException e) {
 					JOptionPane.showMessageDialog(ventana, e.getMessage());
 				}

@@ -7,6 +7,9 @@ import enumeraciones.Ciudad;
 import enumeraciones.SubHogar;
 
 public class Hogar extends Servicio {
+	/**
+	 * CLase que hereda de la clase servicio
+	 */
 	
 	public SubHogar subHogar;
 

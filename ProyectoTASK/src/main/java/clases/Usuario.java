@@ -12,6 +12,12 @@ import excepciones.ContrasegnaInvalidaException;
 import excepciones.UsuarioNoExisteException;
 import utils.ConexionBD;
 
+/**
+ * Clase Usuario para crear todas las funcionalidades de usuario 
+ * @author delah
+ *
+ */
+
 public class Usuario {
 
 	private String nombreUsuario;

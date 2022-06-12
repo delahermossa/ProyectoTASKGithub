@@ -132,7 +132,7 @@ public class PantallaListadoServicios extends JPanel {
 
 				JLabel fotoUsuario = new JLabel("");
 				fotoUsuario.setIcon(
-						new ImageIcon(PantallaListadoServicios.class.getResource("/imagenes/iconoBelleza.png")));
+						new ImageIcon(PantallaListadoServicios.class.getResource("/imagenes/teamwork.png")));
 				fotoUsuario.setFont(new Font("Century Gothic", Font.BOLD, 15));
 				fotoUsuario.setBounds(55, 29, 87, 87);
 				usuarioServicio.add(fotoUsuario);

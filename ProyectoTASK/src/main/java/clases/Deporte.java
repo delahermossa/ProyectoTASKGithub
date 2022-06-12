@@ -7,6 +7,9 @@ import enumeraciones.Ciudad;
 import enumeraciones.SubDeporte;
 
 public class Deporte extends Servicio {
+	/**
+	 * Clase que hereda de la clase servicio
+	 */
 
 	public SubDeporte subDeporte;
 

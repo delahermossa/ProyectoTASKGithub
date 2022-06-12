@@ -12,8 +12,15 @@ import javax.swing.*;
 
 public class MusicaFondo extends Thread{
 	
+	/**
+	 * Interfaz creada para la musica
+	 */
+	
 	private File musica;
 	@Override
+	/**
+	 * Creado para reproducir musica
+	 */
 	public void run() {
 		// TODO Auto-generated method stub
 		super.run();
@@ -36,6 +43,7 @@ public class MusicaFondo extends Thread{
 		
 	}
 	/** 
+	 * Constructor para reproducir musica
 	 * @param musica
 	 */
 	public MusicaFondo(File musica) {

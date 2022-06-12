@@ -9,6 +9,13 @@ import java.util.ArrayList;
 import enumeraciones.Ciudad;
 import utils.ConexionBD;
 
+/**
+ * Superclase Servicio de la que extienden las clases:
+ * belleza, colegio, deporte, mascota y hogar
+ * @author delah
+ *
+ */
+
 public class Servicio {
 
 	private String nombreServicio;

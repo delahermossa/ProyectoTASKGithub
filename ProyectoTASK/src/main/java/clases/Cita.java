@@ -9,7 +9,11 @@ import java.util.ArrayList;
 import enumeraciones.Ciudad;
 import utils.ConexionBD;
 import utils.Utils;
-
+/**
+ * Clase cita creada para crear y consultar citas de los servicios ofrecidos
+ * @author delah
+ *
+ */
 public class Cita {
 
 	private String fechaCita;

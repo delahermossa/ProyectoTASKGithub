@@ -7,11 +7,24 @@ import enumeraciones.Ciudad;
 import enumeraciones.SubBelleza;
 
 public class Belleza extends Servicio{
-	
+	/**
+	 * Clase que hereda de servicio
+	 */
 	public SubBelleza subBelleza;
 
 	
-
+	/**
+	 * Constructor de belleza
+	 * @param nombreServicio
+	 * @param categoria
+	 * @param subCategoria
+	 * @param precioServicio
+	 * @param descripcion
+	 * @param ciudad
+	 * @param subBelleza
+	 * @param email
+	 * @throws SQLException
+	 */
 	public Belleza(String nombreServicio, String categoria, String subCategoria, float precioServicio,
 			String descripcion, Ciudad ciudad, SubBelleza subBelleza, String email) throws SQLException {
 		super(nombreServicio, categoria, subCategoria, precioServicio, descripcion, ciudad, email);
