@@ -19,6 +19,13 @@ import javax.swing.SwingConstants;
 
 import clases.Cita;
 
+/**
+ * Pantalla creada para listar citas solo saldran las citas agendadas si has dado de alta tu servicio y si algun usuario lo ha comprado
+
+ * @author delah
+ *
+ */
+
 public class PantallaMisCitas extends JPanel {
 
 	private Ventana ventana;
@@ -94,6 +101,10 @@ public class PantallaMisCitas extends JPanel {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		/**
+		 * uso scrollPane por si tengo mas de 5 o 6 citas pueda verlas todas, al igual que en listar servicios
+		 */
 
 		scrollPane.setViewportView(panel);
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));

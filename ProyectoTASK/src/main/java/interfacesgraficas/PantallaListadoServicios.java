@@ -25,9 +25,8 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 /**
- * Pantalla creada para listar servicios de los usuarios que han contratado mis servicios
- * solo saldran las citas agendadas si has dado de alta tu servicio y si algun usuario lo ha comprado
- * @author delah
+ * Pantalla creada para listar servicios
+ *  * @author delah
  *
  */
 
