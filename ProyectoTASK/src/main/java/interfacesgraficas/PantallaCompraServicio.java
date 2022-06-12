@@ -18,6 +18,12 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
+/**
+ * Pantalla donde compramos el servicio y solicitamos el dia y la hora de la cita y donde recogemos la informacion
+ *  del servicio y el usuario que lo esta ofreciendo
+ * @author delah
+ *
+ */
 
 public class PantallaCompraServicio extends JPanel {
 
@@ -33,14 +39,18 @@ public class PantallaCompraServicio extends JPanel {
 
 		this.ventana = v;
 		setLayout(null);
-
+		/**
+		 * Boton atrás que nos devuelve a la pantalla servicios
+		 */
 		JButton botonAtras = new JButton("Atr\u00E1s");
 		botonAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ventana.irAPantalla("servicios");
 			}
 		});
-
+		/**
+		 * Label con el icono flecha/indicador
+		 */
 		JLabel labelFlecha_1 = new JLabel("");
 		labelFlecha_1.setIcon(new ImageIcon(PantallaCompraServicio.class.getResource("/imagenes/flecha.png")));
 		labelFlecha_1.setBounds(464, 471, 45, 39);
@@ -50,26 +60,38 @@ public class PantallaCompraServicio extends JPanel {
 		labelFlecha.setIcon(new ImageIcon(PantallaCompraServicio.class.getResource("/imagenes/flecha.png")));
 		labelFlecha.setBounds(464, 413, 45, 39);
 		add(labelFlecha);
-
+		
+		/**
+		 * label donde recogemos los datos de usuario el servicio y el precio
+		 */
 		JLabel labelPrecioDinam = new JLabel("" + usuarioServicio.getServicio().getPrecioServicio() + "€");
 		labelPrecioDinam.setForeground(new Color(218, 165, 32));
 		labelPrecioDinam.setHorizontalAlignment(SwingConstants.CENTER);
 		labelPrecioDinam.setFont(new Font("Century Gothic", Font.BOLD, 15));
 		labelPrecioDinam.setBounds(166, 479, 85, 28);
 		add(labelPrecioDinam);
-
+		
+		/**
+		 * Label donde cargamos los datos de categoria y subcategoria del servicio
+		 */
 		JLabel labelSubDinam = new JLabel(usuarioServicio.getServicio().getSubCategoria());
 		labelSubDinam.setForeground(new Color(169, 169, 169));
 		labelSubDinam.setHorizontalAlignment(SwingConstants.CENTER);
 		labelSubDinam.setFont(new Font("Century Gothic", Font.BOLD, 15));
 		labelSubDinam.setBounds(145, 461, 149, 28);
 		add(labelSubDinam);
-
+		
+		/**
+		 * Label tipo servicio
+		 */
 		JLabel labelSubcat = new JLabel("Tipo de servicio");
 		labelSubcat.setForeground(new Color(95, 158, 160));
 		labelSubcat.setFont(new Font("Century Gothic", Font.BOLD, 15));
 		labelSubcat.setBounds(25, 461, 161, 28);
 		add(labelSubcat);
+		/**
+		 * Label precio servicio
+		 */
 
 		JLabel labelPrecio = new JLabel("Precio");
 		labelPrecio.setHorizontalAlignment(SwingConstants.LEFT);
@@ -77,6 +99,9 @@ public class PantallaCompraServicio extends JPanel {
 		labelPrecio.setFont(new Font("Century Gothic", Font.BOLD, 15));
 		labelPrecio.setBounds(25, 479, 101, 28);
 		add(labelPrecio);
+		/**
+		 * Label para el precio
+		 */
 
 		JLabel labelFondoprecio = new JLabel("");
 		labelFondoprecio
@@ -84,7 +109,9 @@ public class PantallaCompraServicio extends JPanel {
 		labelFondoprecio.setBackground(new Color(255, 255, 255));
 		labelFondoprecio.setBounds(-77, 450, 389, 65);
 		add(labelFondoprecio);
-
+		/**
+		 * Label con imagen decorativa
+		 */
 		JLabel labelImagen = new JLabel("");
 		labelImagen.setIcon(new ImageIcon(PantallaCompraServicio.class.getResource("/imagenes/trato.png")));
 		labelImagen.setBounds(467, 74, 317, 296);
@@ -94,6 +121,9 @@ public class PantallaCompraServicio extends JPanel {
 		botonAtras.setFont(new Font("Century Gothic", Font.BOLD, 15));
 		botonAtras.setBounds(39, 561, 85, 21);
 		add(botonAtras);
+		/**
+		 * Como para seleccionar la hora
+		 */
 
 		final JComboBox comboHora = new JComboBox();
 		comboHora.setModel(new DefaultComboBoxModel(new String[] { "10:00", "11:00", "12:00", "13:00", "14:00", "15:00",
@@ -103,6 +133,9 @@ public class PantallaCompraServicio extends JPanel {
 		comboHora.setBackground(new Color(0, 128, 128));
 		comboHora.setBounds(519, 474, 183, 39);
 		add(comboHora);
+		/**
+		 * label que indica agendar cita
+		 */
 
 		JLabel labelCita = new JLabel("Agenda tu cita!");
 		labelCita.setHorizontalAlignment(SwingConstants.CENTER);
@@ -110,6 +143,9 @@ public class PantallaCompraServicio extends JPanel {
 		labelCita.setFont(new Font("Century Gothic", Font.BOLD, 20));
 		labelCita.setBounds(519, 374, 183, 28);
 		add(labelCita);
+		/**
+		 * Combo para seleccionar el dia 
+		 */
 
 		final JComboBox comboDia = new JComboBox();
 		comboDia.setForeground(new Color(255, 255, 255));
@@ -119,23 +155,37 @@ public class PantallaCompraServicio extends JPanel {
 		comboDia.setFont(new Font("Century Gothic", Font.BOLD, 15));
 		comboDia.setBounds(519, 413, 183, 39);
 		add(comboDia);
+		
+		/**
+		 * Label donde recogemos el usuario
+		 */
 
 		JLabel labelUsuarioDinamic_1 = new JLabel(usuarioServicio.getServicio().getNombreServicio());
 		labelUsuarioDinamic_1.setForeground(new Color(0, 0, 0));
 		labelUsuarioDinamic_1.setFont(new Font("Century Gothic", Font.BOLD, 15));
 		labelUsuarioDinamic_1.setBounds(181, 232, 201, 28);
 		add(labelUsuarioDinamic_1);
+		/**
+		 * Label indica nombre servicio
+		 */
 
 		JLabel labelNomServ = new JLabel("Nombre del servicio");
 		labelNomServ.setForeground(new Color(255, 255, 255));
 		labelNomServ.setFont(new Font("Century Gothic", Font.BOLD, 15));
 		labelNomServ.setBounds(25, 232, 161, 28);
 		add(labelNomServ);
+		
+		/**
+		 * Label que carga la descripcion del servicio
+		 */
 
 		JLabel labelDescpDinam = new JLabel(usuarioServicio.getServicio().getDescripcion());
 		labelDescpDinam.setFont(new Font("Century Gothic", Font.BOLD, 15));
 		labelDescpDinam.setBounds(181, 362, 216, 28);
 		add(labelDescpDinam);
+		/**
+		 * Indica la descripcion
+		 */
 
 		JLabel labelDescrip = new JLabel("Descripcion");
 		labelDescrip.setHorizontalAlignment(SwingConstants.LEFT);
@@ -143,27 +193,44 @@ public class PantallaCompraServicio extends JPanel {
 		labelDescrip.setFont(new Font("Century Gothic", Font.BOLD, 15));
 		labelDescrip.setBounds(25, 362, 126, 28);
 		add(labelDescrip);
+		
+		/**
+		 * Carga la ciudad del servicio
+		 */
 
 		JLabel labelCiudadDinam = new JLabel(usuarioServicio.getUsuario().getCiudad().toString());
 		labelCiudadDinam.setFont(new Font("Century Gothic", Font.BOLD, 15));
 		labelCiudadDinam.setBounds(181, 335, 216, 28);
 		add(labelCiudadDinam);
+		/**
+		 * Carga la direccion
+		 */
 
 		JLabel labelDireccionDinamico = new JLabel(usuarioServicio.getUsuario().getDireccion());
 		labelDireccionDinamico.setFont(new Font("Century Gothic", Font.BOLD, 15));
 		labelDireccionDinamico.setBounds(181, 311, 216, 28);
 		add(labelDireccionDinamico);
-
+		
+		/**
+		 * Carga el email
+		 */
 		JLabel labelEmailDinamico = new JLabel(usuarioServicio.getUsuario().getEmail());
 		labelEmailDinamico.setFont(new Font("Century Gothic", Font.BOLD, 15));
 		labelEmailDinamico.setBounds(181, 284, 201, 28);
 		add(labelEmailDinamico);
+		
+		/**
+		 * Carga el usuario
+		 */
 
 		JLabel labelUsuarioDinamic = new JLabel(usuarioServicio.getUsuario().getNombreUsuario());
 		labelUsuarioDinamic.setFont(new Font("Century Gothic", Font.BOLD, 15));
 		labelUsuarioDinamic.setBounds(181, 259, 201, 28);
 		add(labelUsuarioDinamic);
-
+		
+		/**
+		 * Boton que recoge la compra realizada y la cita 
+		 */
 		JButton btnCompra = new JButton("Comprar");
 		btnCompra.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -178,6 +245,9 @@ public class PantallaCompraServicio extends JPanel {
 
 			}
 		});
+		/**
+		 * Los siguientes label solo indican los campos anteriores
+		 */
 
 		JLabel labelCiudad = new JLabel("Ciudad");
 		labelCiudad.setHorizontalAlignment(SwingConstants.LEFT);
@@ -205,24 +275,32 @@ public class PantallaCompraServicio extends JPanel {
 		labelUsuario.setFont(new Font("Century Gothic", Font.BOLD, 15));
 		labelUsuario.setBounds(25, 259, 138, 28);
 		add(labelUsuario);
-
+		/**
+		 * Label que carga la imagen de icono corporativo
+		 */
 		JLabel labelIcono = new JLabel("");
 		labelIcono.setIcon(new ImageIcon(PantallaCompraServicio.class.getResource("/imagenes/iconoPrincipal.png")));
 		labelIcono.setBounds(39, 46, 100, 109);
 		add(labelIcono);
+		/**
+		 * Label para el fondo izq
+		 */
 
 		JLabel labelFondo = new JLabel("");
 		labelFondo.setBackground(new Color(169, 169, 169));
 		labelFondo.setIcon(new ImageIcon(PantallaCompraServicio.class.getResource("/imagenes/lateral.png")));
 		labelFondo.setBounds(0, 0, 850, 649);
 		add(labelFondo);
-
+		
 		btnCompra.setBackground(new Color(64, 224, 208));
 		btnCompra.setFont(new Font("Century Gothic", Font.BOLD, 20));
 		btnCompra.setForeground(new Color(255, 255, 255));
 		btnCompra.setBounds(539, 545, 149, 49);
 		add(btnCompra);
-
+		
+		/**
+		 * Label fondo izq
+		 */
 		JLabel labelLateraldcha = new JLabel("");
 		labelLateraldcha
 				.setIcon(new ImageIcon(PantallaCompraServicio.class.getResource("/imagenes/lateralderecha.png")));

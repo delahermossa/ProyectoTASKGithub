@@ -26,7 +26,7 @@ import utils.Utils;
 public class PantallaLogin extends JPanel {
 	
 	/**
-	 * 
+	 * Pantalla para login del usuario. 
 	 */
 	private Ventana ventana;
 	private JTextField campoUsuario;
@@ -37,6 +37,10 @@ public class PantallaLogin extends JPanel {
 		setBackground(Color.WHITE);
 		this.ventana = v;
 		setLayout(null);
+		
+		/**
+		 * Boton para loguearse que recoge la informacion del usuario
+		 */
 
 		JButton botonLogin = new BotonAzul("Login");
 		botonLogin.setBackground(Color.WHITE);
@@ -52,6 +56,9 @@ public class PantallaLogin extends JPanel {
 					Utils.currentUser = new Usuario(email, contraseña);
 					JOptionPane.showMessageDialog(ventana, "Bienvenid@ " + Utils.currentUser.getNombreUsuario(),
 							"Inicio de sesion con éxito ", JOptionPane.INFORMATION_MESSAGE);
+					/**
+					 * Aquí implementamos el metodo del filewriter que podemos encontrar en el fichero cache.txt
+					 */
 					ManejoFicheros.insertarLogin(email, contraseña);
 					ventana.irAPantalla("servicios");
 

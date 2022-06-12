@@ -24,6 +24,13 @@ import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 
+/**
+ * Pantalla creada para listar servicios y listar citas de los usuarios que han contratado mis servicios
+ * solo saldran las citas agendadas si has dado de alta tu servicio y si algun usuario lo ha comprado
+ * @author delah
+ *
+ */
+
 public class PantallaListadoServicios extends JPanel {
 	private Ventana ventana;
 
@@ -38,7 +45,9 @@ public class PantallaListadoServicios extends JPanel {
 
 		final JPanel panel = new JPanel();
 		add(scrollPane, BorderLayout.CENTER);
-
+		/**
+		 * cargamos listado
+		 */
 		cargarListado(mio, servicio, panel);
 		scrollPane.setViewportView(panel);
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
@@ -89,8 +98,10 @@ public class PantallaListadoServicios extends JPanel {
 				JButton botonComprar = new JButton("Comprar");
 				if (mio)
 					botonComprar.setText("Borrar");
-				// Genero una copia exacta de usuServicio de tipo final para poder usarla en el
-				// onclick
+				/**
+				 * Genero una copia exacta de usuServicio de tipo final para poder usarla en el onclick
+				 */
+				
 				final ArrayList<UsuarioServicio> listadoArrayList = new ArrayList<>();
 				listadoArrayList.addAll(usuServicio);
 				botonComprar.addActionListener(new ActionListener() {
@@ -129,6 +140,10 @@ public class PantallaListadoServicios extends JPanel {
 				nombre.setHorizontalAlignment(SwingConstants.CENTER);
 				nombre.setBounds(176, 42, 45, 13);
 				usuarioServicio.add(nombre);
+				
+				/**
+				 * label para foto predeterminada de usuario del servicio
+				 */
 
 				JLabel fotoUsuario = new JLabel("");
 				fotoUsuario.setIcon(
@@ -136,7 +151,9 @@ public class PantallaListadoServicios extends JPanel {
 				fotoUsuario.setFont(new Font("Century Gothic", Font.BOLD, 15));
 				fotoUsuario.setBounds(55, 29, 87, 87);
 				usuarioServicio.add(fotoUsuario);
-
+				/**
+				 * Fondo de cada servicio
+				 */
 				JLabel fondoUsuario = new JLabel("");
 				fondoUsuario.setIcon(
 						new ImageIcon(PantallaListadoServicios.class.getResource("/imagenes/fondoServicios.jpg")));
