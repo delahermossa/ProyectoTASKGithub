@@ -68,11 +68,16 @@ public class PantallaLogin extends JPanel {
 				}
 			}
 		});
-
+		/**
+		 * mensaje de ayuda para iniciar sesion
+		 */
 		botonLogin.setToolTipText("Pincha aqu\u00ED para iniciar sesi\u00F3n");
 
 		botonLogin.setBounds(511, 180, 160, 44);
 		this.add(botonLogin);
+		/**
+		 * Boton que te lleva a la pantalla registro
+		 */
 
 		JButton botonRegistro = new BotonVerde("Registrarse");
 		botonRegistro.setBackground(new Color(95, 158, 160));
@@ -87,7 +92,9 @@ public class PantallaLogin extends JPanel {
 		});
 		botonRegistro.setBounds(618, 546, 160, 44);
 		add(botonRegistro);
-
+		/**
+		 * Los siguientes label son indicadores nada mas
+		 */
 		JLabel etiquetaTitulo = new JLabel("Bienvenido a TASK");
 		etiquetaTitulo.setForeground(Color.GRAY);
 		etiquetaTitulo.setHorizontalAlignment(SwingConstants.CENTER);
@@ -120,17 +127,28 @@ public class PantallaLogin extends JPanel {
 		campoContraseña.setEchoChar('*');
 		campoContraseña.setBounds(456, 137, 215, 33);
 		add(campoContraseña);
+		
+		/**
+		 * label con el icono corporativo
+		 */
 
 		JLabel LabelIcono = new JLabel("");
 		LabelIcono.setIcon(new ImageIcon(PantallaLogin.class.getResource("/imagenes/iconoPrincipal.png")));
 		LabelIcono.setBounds(79, 10, 102, 116);
 		add(LabelIcono);
+		
+		/**
+		 * Label para indicar que puedes registrarte
+		 */
 
 		JLabel LabelRegistro = new JLabel("\u00BFA\u00FAn no tienes cuenta...? Reg\u00EDstrate ya!");
 		LabelRegistro.setForeground(new Color(95, 158, 160));
 		LabelRegistro.setFont(new Font("Century Gothic", Font.BOLD, 20));
 		LabelRegistro.setBounds(37, 552, 492, 33);
 		add(LabelRegistro);
+		/**
+		 * label con la imagen de fondo de pantallalogin
+		 */
 
 		JLabel FondoCiudad = new JLabel("");
 		FondoCiudad.setForeground(new Color(95, 158, 160));
