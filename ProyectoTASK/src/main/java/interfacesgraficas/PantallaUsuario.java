@@ -15,6 +15,11 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+ * Pantalla creada para ver tu información de usuario, tus citas o tus servicios
+ * @author delah
+ *
+ */
 public class PantallaUsuario extends JPanel{
 	
 	private Ventana ventana;
@@ -24,7 +29,9 @@ public class PantallaUsuario extends JPanel{
 		setBorder(null);
 		setBackground(new Color(230, 230, 250));
 		setLayout(null);
-				
+				/**
+				 * boton para volver atrás a la pantalla de todos los servicos
+				 */
 				JButton botonAtras = new JButton("Atras");
 				botonAtras.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
@@ -32,6 +39,9 @@ public class PantallaUsuario extends JPanel{
 						ventana.irAPantalla("servicios");
 					}
 				});
+				/**
+				 * boton que te devuelve a la pantalla login para que puedas registrarte con otro usuario
+				 */
 				
 				JButton botonCerrarsesion = new JButton("Cerrar sesi\u00F3n");
 				botonCerrarsesion.addActionListener(new ActionListener() {
@@ -44,6 +54,10 @@ public class PantallaUsuario extends JPanel{
 				botonCerrarsesion.setBackground(new Color(95, 158, 160));
 				botonCerrarsesion.setBounds(545, 551, 157, 33);
 				add(botonCerrarsesion);
+				
+				/**
+				 * los siguientes label son textos o indicaciones
+				 */
 				
 				JLabel labelPerfil = new JLabel("Mi perfil");
 				labelPerfil.setForeground(new Color(218, 165, 32));
@@ -61,11 +75,17 @@ public class PantallaUsuario extends JPanel{
 				botonAtras.setBounds(25, 551, 157, 33);
 				add(botonAtras);
 				
+				/**
+				 * Carga la ciudad a la que perteneces o que elegiste en el momento del registro
+				 */
+				
 				JLabel labelCiudadDinam = new JLabel(""+Utils.currentUser.getCiudad());
 				labelCiudadDinam.setFont(new Font("Century Gothic", Font.BOLD, 15));
 				labelCiudadDinam.setBounds(152, 429, 216, 28);
 				add(labelCiudadDinam);
-				
+				/***
+				 * Icono usuario
+				 */
 				JLabel iconoUsu = new JLabel("");
 				iconoUsu.setIcon(new ImageIcon(PantallaUsuario.class.getResource("/imagenes/user.png")));
 				iconoUsu.setHorizontalAlignment(SwingConstants.CENTER);
@@ -77,6 +97,10 @@ public class PantallaUsuario extends JPanel{
 					public void actionPerformed(ActionEvent arg0) {
 					}
 				});
+				
+				/**
+				 * Este boton te lleva a la pantalla donde podrás ver tu listado de servicios ofrecidos
+				 */
 				botonMiServ.addMouseListener(new MouseAdapter() {
 					@Override
 					public void mouseClicked(MouseEvent e) {
@@ -90,6 +114,11 @@ public class PantallaUsuario extends JPanel{
 				botonMiServ.setBounds(624, 419, 177, 44);
 				add(botonMiServ);
 				
+				/**
+				 * Este boton te lleva a la pantalla de citas y saldrán estas si has dado de alta un servicio y además
+				 * algún usuario ha decidido comprar/contratar tu servicio en caso de que no se cumplan esas dos condiciones
+				 * no te saldrá ninguna cita
+				 */
 				JButton botonMisCitas = new JButton("MIS CITAS");
 				botonMisCitas.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
@@ -136,6 +165,9 @@ public class PantallaUsuario extends JPanel{
 				labelUsuarioDinamic.setFont(new Font("Century Gothic", Font.BOLD, 15));
 				labelUsuarioDinamic.setBounds(142, 317, 201, 28);
 				add(labelUsuarioDinamic);
+				/**
+				 * label indicadores o informativos
+				 */
 		
 		JLabel labelEmail = new JLabel("Email");
 		labelEmail.setForeground(new Color(255, 255, 255));
@@ -165,6 +197,7 @@ public class PantallaUsuario extends JPanel{
 		labelFondo.setIcon(new ImageIcon(PantallaUsuario.class.getResource("/imagenes/lateral.png")));
 		labelFondo.setBounds(0, 0, 850, 650);
 		add(labelFondo);
+		
 		addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

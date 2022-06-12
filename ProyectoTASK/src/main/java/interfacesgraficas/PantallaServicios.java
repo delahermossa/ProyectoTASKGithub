@@ -14,6 +14,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+/**
+ * Pantalla creada para ver los servicios ofrecidos
+ * @author delah
+ *
+ */
+
 public class PantallaServicios extends JPanel {
 
 	private Ventana ventana;
@@ -23,7 +29,9 @@ public class PantallaServicios extends JPanel {
 
 		this.ventana = v;
 		setLayout(null);
-
+		/**
+		 * Boton para dar de alta un servicio
+		 */
 		JButton botonTASKER = new JButton("ALTA TASKER");
 		botonTASKER.addMouseListener(new MouseAdapter() {
 			@Override
@@ -31,7 +39,9 @@ public class PantallaServicios extends JPanel {
 				ventana.irAPantalla("altaservicio");
 			}
 		});
-
+		/**
+		 * Label con el icono de usuario que te lleva a la pantalla usuario donde puedes ver tus datos, tus citas y tus servicios 
+		 */
 		JLabel iconoUsuario = new JLabel("");
 		iconoUsuario.addMouseListener(new MouseAdapter() {
 			@Override
@@ -220,6 +230,10 @@ public class PantallaServicios extends JPanel {
 		botonTASKER.setBounds(493, 502, 177, 44);
 
 		add(botonTASKER);
+		
+		/**
+		 * Boton atrás para volver al login
+		 */
 
 		JButton botonAtras = new JButton("Atr\u00E1s");
 		botonAtras.setBackground(new Color(95, 158, 160));
@@ -233,6 +247,9 @@ public class PantallaServicios extends JPanel {
 			}
 		});
 		add(botonAtras);
+		/**
+		 * los siguientes label son titulos, iconos o imágenes
+		 */
 
 		JLabel labelTitulo = new JLabel("\u00A1Encuentra todos los servicios en tu ciudad!");
 		labelTitulo.setForeground(new Color(255, 255, 255));
@@ -295,8 +312,6 @@ public class PantallaServicios extends JPanel {
 		labelAlta2.setFont(new Font("Century Gothic", Font.BOLD, 15));
 		labelAlta2.setBounds(24, 539, 391, 26);
 		add(labelAlta2);
-		
-
 	
 
 		JLabel labelFondoServicio = new JLabel("");
